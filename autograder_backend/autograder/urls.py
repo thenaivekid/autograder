@@ -3,7 +3,8 @@ from .views import (
     UserListCreateView, UserDetailView,
     AssignmentListCreateView, AssignmentDetailView,
     SubmissionListCreateView, SubmissionDetailView,
-    make_submission
+    make_submission,
+    login
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('submissions/', SubmissionListCreateView.as_view(), name='submission-list'),
     path('submissions/<int:pk>/', SubmissionDetailView.as_view(), name='submission-detail'),
     path('solution/', make_submission, name="submit_solution"),
+    path('login/', login, name="login"),
 ]

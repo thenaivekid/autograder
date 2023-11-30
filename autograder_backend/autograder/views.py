@@ -52,7 +52,6 @@ def make_submission(request):
         comment = response["comment"]
         assignment = Assignment.objects.get(id=assignment)
         student = User.objects.get(id=student)
-        print(type(student))
         submission = Submission.objects.create(
             assignment=assignment,
             student=student,
@@ -63,3 +62,20 @@ def make_submission(request):
         submission.save()
         return JsonResponse(response, safe=True)
     return JsonResponse({"message": "Submission failed"}, safe=True)
+
+@csrf_exempt
+def login(request):
+    if request.method == "post":
+        data = json.loads(request.body)
+        username = data.get("username")
+        password = data.get("password")
+
+        user = User.objects.filter(username=username, password=password)
+        if user:
+            response = {"username": user.username, "password": user.password, "id": user.id}
+            response = json.loads(response)
+            return JsonResponse(response, safe=True)
+        return JsonResponse(json.loads({"message": "user not found in db"}), safe=True)
+    return JsonResponse(json.loads({"message": "only post request allowed"}), safe=True)
+
+
