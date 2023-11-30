@@ -19,7 +19,7 @@ class Assignment(models.Model):
     teacher = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.TextField()
     answer = models.TextField()
-    clues_to_autograder = models.TextField()
+    clues_to_autograder = models.TextField(blank=True)
 
     def __str__(self):
         return f"Assignment {self.id} - {self.question}"
@@ -29,8 +29,8 @@ class Submission(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     answer = models.TextField()
-    comment = models.TextField()
-    marks = models.IntegerField()
+    comment = models.TextField(blank=True)
+    marks = models.IntegerField(blank=True)
 
     def __str__(self):
         return f"Submission {self.id} - Assignment {self.assignment.id} by {self.student.username}"
