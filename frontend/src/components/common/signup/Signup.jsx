@@ -6,14 +6,23 @@ import {
   FormGroup,
   Input,
   Label,
+  LoginDiv,
+  LoginHeading,
   SignUpHeading,
 } from "./style";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+import {
+  setStatus,
+  setUser,
+  useRegisterUserMutation,
+} from "../../../store/store";
+import { useEffect } from "react";
 
 const SignupForm = () => {
+  const [registerUser, status] = useRegisterUserMutation();
   const {
     register,
     handleSubmit,
@@ -21,17 +30,31 @@ const SignupForm = () => {
     watch,
   } = useForm();
   const role = useSelector((state) => state.role.role);
+
+  const { data, isLoading, isError } = status;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
     const passedData = {
       role,
-      fullName: data.fullName,
+      username: data.fullName,
       password: data.password,
     };
-    console.log(passedData);
+    const raw = JSON.stringify(passedData);
+    registerUser(raw);
   };
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data));
+      dispatch(setStatus(true));
+      if (role === "teacher") {
+        navigate("/assignments");
+      } else {
+        navigate("/all");
+      }
+    }
+  }, [data]);
 
   const password = watch("password", "");
   return (
@@ -39,7 +62,7 @@ const SignupForm = () => {
       <SignUpHeading>Sign Up </SignUpHeading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
-          <Label>Full Name</Label>
+          <Label>Username</Label>
           <Input
             {...register("fullName", {
               required: "Fullname  is required",
@@ -88,6 +111,10 @@ const SignupForm = () => {
 
         <Button type='submit'>Register</Button>
       </form>
+      <LoginDiv>
+        <p>Already have an account?</p>
+        <LoginHeading to='/login'>Login</LoginHeading>
+      </LoginDiv>
     </FormContainer>
   );
 };
