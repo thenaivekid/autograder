@@ -51,7 +51,7 @@ const SignupForm = () => {
       if (role === "teacher") {
         navigate("/assignments");
       } else {
-        navigate("/all");
+        navigate("/all/assignments");
       }
     }
   }, [data]);

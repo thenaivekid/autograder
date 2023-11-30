@@ -37,10 +37,13 @@ justify-content:center;
 width:100%;
 margin:6rem 0;
 `
-export const AssignmentCreationDiv=styled(WrapperContainer)`
+export const AssignmentCreationDiv = styled(WrapperContainer)`
 
 `
-export const AssignmentAdditionFormDiv=styled(WrapperContainer)`
+export const AssignmentAdditionFormDiv = styled(WrapperContainer)`
 
+`
+
+export const AllAssignmetStudentDiv = styled(WrapperContainer)`
 `
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AddAssignmentHeading,
   AssignmentFormDiv,
@@ -7,26 +7,35 @@ import {
   InputTextArea,
   Label,
 } from "./style";
-import { AddAssignmentDiv } from "../addAssignments/style";
+
 import { useForm } from "react-hook-form";
-import { useSetAssignementMutation } from "../../../store/store";
-import { useSelector } from "react-redux";
+import { setAssignList, useSetAssignementMutation } from "../../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function AssignmentForm() {
   const [setAssignment, status] = useSetAssignementMutation();
-  const teacherId = useSelector((state) => state.role.userData.id);
-  console.log(teacherId);
+  const teacherId = useSelector((state) => state?.role?.userData?.id);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     data.teacher = teacherId;
     setAssignment(data);
   };
+  const { isLoading, data } = status;
 
-  console.log(status);
+  useEffect(() => {
+    if (data) {
+      dispatch(setAssignList(data));
+      navigate("/assignments");
+    }
+  }, [data]);
+
   return (
     <AssignmentFormDiv onSubmit={handleSubmit(onSubmit)}>
       <AddAssignmentHeading>Add</AddAssignmentHeading>
@@ -64,3 +73,10 @@ function AssignmentForm() {
 }
 
 export default AssignmentForm;
+
+
+// id: 11,
+// teacher: 28,
+// question: 'ooefj',
+// answer: 'jffoejf',
+// clues_to_autograder: 'jfoejfioef'

@@ -16,3 +16,9 @@ export const AddAssignment = styled.h4`
 export const AddIcon = styled.div`
 cursor: pointer;
 `
+
+export const AllAssignmentDiv = styled.div`
+margin-top:2rem;
+background-color:${props => props.theme.component};
+padding:1rem 2rem;
+`
