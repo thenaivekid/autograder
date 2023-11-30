@@ -9,7 +9,6 @@ export const api = createApi({
         return {
             registerUser: builder.mutation({
                 query: (formData) => {
-                    console.log(formData);
                     return {
                         url: '/users/',
                         method: "POST",
@@ -40,6 +39,20 @@ export const api = createApi({
                         method: "GET"
                     }
                 }
+            }),
+            postAssignmentAnswer: builder.mutation({
+                query: (data) => {
+                    console.log(data);
+                    return {
+                        url: '/solution/',
+                        method: "POST"
+                        ,
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: data
+                    }
+                }
             })
         }
     }
@@ -48,4 +61,4 @@ export const api = createApi({
 
 
 
-export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery } = api;
+export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation } = api;
