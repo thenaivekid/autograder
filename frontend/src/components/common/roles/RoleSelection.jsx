@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function RoleSelection() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const roles = ["Teacher", "Student"];
+  const roles = ["teacher", "student"];
   return (
     <RoleBoxDiv>
       {roles.map((role) => {

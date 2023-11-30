@@ -29,3 +29,18 @@ width:100%;
 margin:6rem 0;
 `
 
+export const LoginDiv = styled(WrapperContainer)`
+position:relative;
+display: flex;
+align-items:center;
+justify-content:center;
+width:100%;
+margin:6rem 0;
+`
+export const AssignmentCreationDiv=styled(WrapperContainer)`
+
+`
+export const AssignmentAdditionFormDiv=styled(WrapperContainer)`
+
+`
+
