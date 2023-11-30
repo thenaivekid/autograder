@@ -1,2 +1,5 @@
 llama-2-7b.Q4_0.gguf
 test.ipynb
+__pycache__/
+db.sqlite3
+.env
