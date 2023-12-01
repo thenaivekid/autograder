@@ -56,3 +56,4 @@ export const AssignmentAdditionFormDiv = styled(WrapperContainer)`
 export const AllAssignmetStudentDiv = styled(WrapperContainer)`
 `
 
+export const TeachersMainDiv=styled(WrapperContainer)``

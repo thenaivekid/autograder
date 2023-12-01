@@ -15,7 +15,6 @@ function AssignmentPage() {
       dispatch(setAssignmentQuestions(data));
     }
   }, [data]);
-  console.log(data);
   return (
     <AllAssignmetStudentDiv>
       <AllStudentsAssignmet />
