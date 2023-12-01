@@ -40,6 +40,7 @@ const SignupForm = () => {
       role,
       username: data.fullName,
       password: data.password,
+      email:data.email
     };
     const raw = JSON.stringify(passedData);
     registerUser(raw);
@@ -72,6 +73,22 @@ const SignupForm = () => {
                 message: "FullName must be at least 3 characters long",
               },
             })}
+          />
+          {errors.username && (
+            <ErrorMessage>{errors.fullName.message}</ErrorMessage>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Label>Email</Label>
+          <Input
+            {...register("email", {
+              required: "Email  is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Enter a valid email address",
+              },
+            })}
+            type="email"
           />
           {errors.username && (
             <ErrorMessage>{errors.fullName.message}</ErrorMessage>

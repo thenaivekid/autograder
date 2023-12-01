@@ -8,7 +8,7 @@ function AllAssignments() {
   const allAssignment = useSelector((state) => {
     return state.teacher.assignList;
   });
-
+  console.log(allAssignment);
   return (
     <AllAssignmentDiv>
       {allAssignment.length === 0 ? (

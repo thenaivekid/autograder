@@ -4,6 +4,7 @@ import {
   AssignmentFormDiv,
   Button,
   FormGroup,
+  Input,
   InputTextArea,
   Label,
 } from "./style";
@@ -28,6 +29,8 @@ function AssignmentForm() {
     setAssignment(data);
   };
   const { isLoading, data } = status;
+
+ 
 
   useEffect(() => {
     if (data) {
@@ -64,6 +67,16 @@ function AssignmentForm() {
           {...register("clues_to_autograder", {
             required: "=rubric  are required",
           })}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Deadline</Label>
+        <Input
+          placeholder='Add a deadline'
+          {...register("deadline", {
+            required: "=rubric  are required",
+          })}
+          type='date'
         />
       </FormGroup>
 
