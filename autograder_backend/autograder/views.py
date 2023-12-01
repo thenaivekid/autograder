@@ -87,6 +87,6 @@ def login_(request):
 def get_teachers(request):
     teachers = User.objects.filter(role='teacher')
 
-    serialized_teachers = [teacher.username for teacher in teachers]
+    serialized_teachers = [{"username": teacher.username, "subject": teacher.subject} for teacher in teachers]
     
-    return JsonResponse({"teachers": serialized_teachers}, safe=False)
+    return JsonResponse(serialized_teachers, safe=False)

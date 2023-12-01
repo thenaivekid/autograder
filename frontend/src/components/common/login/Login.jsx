@@ -11,33 +11,43 @@ import {
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useUserLoginMutation } from "../../../store/store";
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [userLogin, status] = useUserLoginMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    userLogin(data);
+    userLogin(JSON.stringify(data));
+    
   };
+
+  console.log(status);
 
   return (
     <FormContainer>
       <LoginHeading>Login </LoginHeading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
-          <Label>Username</Label>
+          <Label>Email</Label>
           <Input
-            {...register("Username", {
-              required: "Username is required",
+            {...register("email", {
+              required: "Email  is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Enter a valid email address",
+              },
             })}
+            type='email'
           />
           {errors.username && (
-            <ErrorMessage>{errors.username.message}</ErrorMessage>
+            <ErrorMessage>{errors.fullName.message}</ErrorMessage>
           )}
         </FormGroup>
 

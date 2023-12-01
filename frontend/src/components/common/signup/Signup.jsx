@@ -21,6 +21,7 @@ import {
 } from "../../../store/store";
 import { useEffect } from "react";
 import Loading from "../loading/Loading";
+import Swal from "sweetalert2";
 
 const SignupForm = () => {
   const [registerUser, status] = useRegisterUserMutation();
@@ -30,9 +31,8 @@ const SignupForm = () => {
     formState: { errors },
     watch,
   } = useForm();
-  const role = useSelector((state) => state.role.role);
-
-  const { data, isLoading, isError } = status;
+  const role = useSelector((state) => state?.role?.role) || false;
+  const { data, isLoading, isError, error } = status;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {
@@ -40,13 +40,24 @@ const SignupForm = () => {
       role,
       username: data.fullName,
       password: data.password,
-      email:data.email
+      email: data.email,
+      subject: data.subject || "",
     };
-    const raw = JSON.stringify(passedData);
-    registerUser(raw);
+
+    registerUser(passedData);
   };
+  console.log(error?.data?.email[0]);
 
   useEffect(() => {
+    if (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error?.data?.email[0],
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     if (data) {
       dispatch(setUser(data));
       dispatch(setStatus(true));
@@ -56,7 +67,7 @@ const SignupForm = () => {
         navigate("/all/assignments");
       }
     }
-  }, [data]);
+  }, [data, error]);
 
   const password = watch("password", "");
   return (
@@ -78,6 +89,23 @@ const SignupForm = () => {
             <ErrorMessage>{errors.fullName.message}</ErrorMessage>
           )}
         </FormGroup>
+        {role === "teacher" && (
+          <FormGroup>
+            <Label>Subject</Label>
+            <Input
+              {...register("subject", {
+                required: "Subject  is required",
+                minLength: {
+                  value: 3,
+                  message: "Subject must be at least 3 characters long",
+                },
+              })}
+            />
+            {errors.subject && (
+              <ErrorMessage>{errors.subject.message}</ErrorMessage>
+            )}
+          </FormGroup>
+        )}
         <FormGroup>
           <Label>Email</Label>
           <Input
@@ -88,7 +116,7 @@ const SignupForm = () => {
                 message: "Enter a valid email address",
               },
             })}
-            type="email"
+            type='email'
           />
           {errors.username && (
             <ErrorMessage>{errors.fullName.message}</ErrorMessage>

@@ -7,10 +7,7 @@ import Loading from "../../components/common/loading/Loading";
 function SignupPage() {
   const [showModal, setShowModal] = useState(true);
 
-  const onShowModalButtonClicked = () => {
-    let value = !showModal ? true : false;
-    setShowModal(value);
-  };
+
   return (
     <SignUpDiv>
       <SignupForm />

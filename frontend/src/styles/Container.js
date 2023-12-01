@@ -45,6 +45,7 @@ align-items:center;
 justify-content:center;
 width:100%;
 margin:6rem 0;
+height:60rem;
 `
 export const AssignmentCreationDiv = styled(WrapperContainer)`
 

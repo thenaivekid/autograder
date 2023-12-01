@@ -11,9 +11,10 @@ class User(models.Model):
     ]
 
     username = models.CharField(max_length=255)
-    email = models.CharField(max_length=255, blank=False)
+    email = models.CharField(max_length=255, blank=False, unique=True)
     password = models.TextField(max_length=255)
     role = models.CharField(max_length=10, choices=ROLES)
+    subject = models.CharField(max_length=32, blank=True)
 
     def __str__(self):
         return self.username

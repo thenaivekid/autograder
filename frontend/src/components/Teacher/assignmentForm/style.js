@@ -34,7 +34,7 @@ export const InputTextArea = styled.textarea`
   outline:none;
   color:${props => props.theme.text};
   border:1px solid ${props => props.theme.border};
-  min-height:15rem;
+  min-height:12rem;
 `
 
 export const Button = styled.button`

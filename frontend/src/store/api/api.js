@@ -42,7 +42,6 @@ export const api = createApi({
             }),
             postAssignmentAnswer: builder.mutation({
                 query: (data) => {
-                    console.log(data);
                     return {
                         url: '/solution/',
                         method: "POST"
@@ -53,6 +52,20 @@ export const api = createApi({
                         body: data
                     }
                 }
+            }),
+            userLogin: builder.mutation({
+                query: (data) => {
+                    return {
+                        url: 'login/',
+                        method: "POST"
+                        ,
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: data
+
+                    }
+                }
             })
         }
     }
@@ -61,4 +74,4 @@ export const api = createApi({
 
 
 
-export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation } = api;
+export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation } = api;

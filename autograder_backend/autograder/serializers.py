@@ -4,7 +4,7 @@ from .models import User, Assignment, Submission
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username','email', 'password', 'role']
+        fields = ['id', 'username','email', 'password', 'role', 'subject']
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
