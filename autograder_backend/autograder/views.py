@@ -1,6 +1,8 @@
 import json 
 from rest_framework import generics
+from rest_framework.parsers import MultiPartParser
 from django.http import JsonResponse
+from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from .models import User, Assignment, Submission
@@ -30,9 +32,19 @@ class AssignmentDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 # Submission views
 class SubmissionListCreateView(generics.ListCreateAPIView):
-    # teacher = User.objects.get(id=)
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
+    parser_classes = [MultiPartParser]
+
+    def post(self, request, *args, **kwargs):
+        serializer = SubmissionSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+
+        return Response(serializer.errors, status=400)
+
     
 class SubmissionDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Submission.objects.all()
@@ -77,7 +89,7 @@ def login_(request):
 
         user = User.objects.get(email=email, password=password)
         if user:
-            response = {"username": user.username, "password": user.password, "id": user.id}
+            response = {"username": user.username, "password": user.password, "id": user.id, "role": user.roll}
             return JsonResponse(response, safe=False)
         return JsonResponse({"message": "user not found in db"}, safe=False)
     return JsonResponse({"message": "only post request allowed"}, safe=False)

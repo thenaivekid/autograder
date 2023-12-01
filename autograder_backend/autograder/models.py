@@ -39,6 +39,7 @@ class Submission(models.Model):
     comment = models.TextField(blank=True)
     marks = models.IntegerField(blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='submission_images/', blank=True, null=True)
     
 
     def __str__(self):
