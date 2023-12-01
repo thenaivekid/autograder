@@ -58,11 +58,11 @@ function AssignmentForm() {
         />
       </FormGroup>
       <FormGroup>
-        <Label>Optional</Label>
+        <Label>Rubric</Label>
         <InputTextArea
-          placeholder='Add a optional'
+          placeholder='Add a rubric'
           {...register("clues_to_autograder", {
-            required: "=Options  are required",
+            required: "=rubric  are required",
           })}
         />
       </FormGroup>
@@ -73,7 +73,6 @@ function AssignmentForm() {
 }
 
 export default AssignmentForm;
-
 
 // id: 11,
 // teacher: 28,

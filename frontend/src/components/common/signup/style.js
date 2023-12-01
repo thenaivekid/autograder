@@ -5,6 +5,7 @@ export const FormContainer = styled.div`
   width: 40rem;
   background-color:${props => props.theme.component};
   padding:1rem 2rem 2rem 2rem;
+  border:1px solid ${props => props.theme.border};
 `;
 
 export const FormGroup = styled.div`
@@ -30,10 +31,10 @@ export const Input = styled.input`
 export const Button = styled.button`
  padding:1rem 1.5rem;
   font-size: 16px;
-  color: ${props => props.theme.link};
+  color: ${props => props.theme.background};
   border: none;
   cursor: pointer;
-  background-color:${props => props.theme.specialText};
+  background-color:${props => props.theme.button};
   font-weight:600;
   width:100%;
 `;

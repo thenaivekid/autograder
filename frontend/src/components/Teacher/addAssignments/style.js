@@ -7,6 +7,16 @@ display: flex;
 justify-content:space-between;
 margin-top:2rem;
 padding:1rem 2rem;
+flex-direction:column;
+`
+
+export const AddAssignmentTitleDiv = styled.div`
+
+display: flex;
+align-items:center;
+justify-content:space-between;
+margin-top:2rem;
+background-color:${props => props.theme.component};
 `
 
 export const AddAssignment = styled.h4`

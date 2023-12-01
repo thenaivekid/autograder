@@ -20,6 +20,7 @@ import {
   useRegisterUserMutation,
 } from "../../../store/store";
 import { useEffect } from "react";
+import Loading from "../loading/Loading";
 
 const SignupForm = () => {
   const [registerUser, status] = useRegisterUserMutation();
@@ -109,7 +110,7 @@ const SignupForm = () => {
           )}
         </FormGroup>
 
-        <Button type='submit'>Register</Button>
+        <Button type='submit'>{isLoading ? <Loading /> : "Register"}</Button>
       </form>
       <LoginDiv>
         <p>Already have an account?</p>

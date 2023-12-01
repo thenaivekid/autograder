@@ -5,9 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { darkThemeColors } from "./styles/Theme";
+import { darkThemeColors, lightThemeColors } from "./styles/Theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import Role from "./pages/common/Role";
 import Layout from "./layout/Layout";
 import SignupPage from "./pages/common/SignupPage";
 import LoginPage from "./pages/common/LoginPage";
@@ -15,6 +14,7 @@ import AssignmentCreationPage from "./pages/teacher/AssignmentCreationPage";
 import AssignmentAdditionPage from "./pages/teacher/AssignmentAdditionPage";
 import AllAssignments from "./components/Teacher/assignments/AllAssignments";
 import AssignmentPage from "./pages/student/AssignmentPage";
+import HomePage from "./pages/common/HomePage";
 
 function App() {
   const router = createBrowserRouter(
@@ -24,9 +24,10 @@ function App() {
         element={<Layout />}
       >
         <Route
-          element={<Role />}
+          element={<HomePage />}
           index
         />
+       
         <Route
           element={<SignupPage />}
           path='/signup'
@@ -59,7 +60,7 @@ function App() {
   );
 
   return (
-    <ThemeProvider theme={darkThemeColors}>
+    <ThemeProvider theme={lightThemeColors}>
       <RouterProvider router={router} />
       <GlobalStyle />
     </ThemeProvider>

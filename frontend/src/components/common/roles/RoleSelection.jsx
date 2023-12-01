@@ -5,9 +5,12 @@ import { setRole } from "../../../store/store";
 import { useNavigate } from "react-router-dom";
 
 function RoleSelection() {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const roles = ["teacher", "student"];
+
+  
   return (
     <RoleBoxDiv>
       {roles.map((role) => {

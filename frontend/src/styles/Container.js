@@ -7,17 +7,25 @@ width:100%;
 padding:0rem 2rem;
 margin:0 auto;
 `
+export const HomePageDiv = styled(WrapperContainer)`
 
+`
+
+export const LayoutDiv = styled.div`
+padding-top:60px;
+`
 export const RolePages = styled(WrapperContainer)`
 display: flex;
 align-items:center;
 justify-content:center;
-height:100vh;
 flex-direction:column;
+margin-top:2rem;
+
+
 h1{
     font-size:3rem;
 }
-
+height:60rem;
 `
 
 export const SignUpDiv = styled(WrapperContainer)`
@@ -26,7 +34,8 @@ display: flex;
 align-items:center;
 justify-content:center;
 width:100%;
-margin:6rem 0;
+margin:6rem auto;
+height:60rem;
 `
 
 export const LoginDiv = styled(WrapperContainer)`

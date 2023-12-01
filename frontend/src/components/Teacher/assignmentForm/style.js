@@ -43,9 +43,10 @@ export const Button = styled.button`
   color: ${props => props.theme.link};
   border: none;
   cursor: pointer;
-  background-color:${props => props.theme.specialText};
+  background-color:${props => props.theme.button};
   font-weight:600;
   width:100%;
+  color:${props => props.theme.background};
 `;
 
 export const ErrorMessage = styled.p`
