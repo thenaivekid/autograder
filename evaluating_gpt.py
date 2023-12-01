@@ -1,7 +1,6 @@
 from openai import OpenAI
 import json
 
-client = OpenAI(api_key="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")
 
 
 def get_score_from_gpt(question, clues_to_autograder, answer, student_answer):
