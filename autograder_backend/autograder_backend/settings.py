@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'corsheaders',  
     'autograder',
+    "django_extensions",
 ]
 
 MIDDLEWARE = [

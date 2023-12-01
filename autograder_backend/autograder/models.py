@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+import django
+
 
 # Users model
 class User(models.Model):
@@ -8,7 +11,8 @@ class User(models.Model):
     ]
 
     username = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, blank=False)
+    password = models.TextField(max_length=255)
     role = models.CharField(max_length=10, choices=ROLES)
 
     def __str__(self):
@@ -20,6 +24,8 @@ class Assignment(models.Model):
     question = models.TextField()
     answer = models.TextField()
     clues_to_autograder = models.TextField(blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    deadline = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
         return f"Assignment {self.id} - {self.question}"
@@ -31,6 +37,8 @@ class Submission(models.Model):
     answer = models.TextField()
     comment = models.TextField(blank=True)
     marks = models.IntegerField(blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return f"Submission {self.id} - Assignment {self.assignment.id} by {self.student.username}"

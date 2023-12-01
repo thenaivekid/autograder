@@ -4,14 +4,14 @@ from .models import User, Assignment, Submission
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'role']
+        fields = ['id', 'username','email', 'password', 'role']
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Assignment
-        fields = ['id', 'teacher', 'question', 'answer', 'clues_to_autograder']
+        fields = ['id', 'teacher', 'question', 'answer', 'clues_to_autograder', 'timestap', 'deadline']
 
 class SubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Submission
-        fields = ['id', 'assignment', 'student', 'answer', 'comment', 'marks']
+        fields = ['id', 'assignment', 'student', 'answer', 'comment', 'marks', 'timestamp']

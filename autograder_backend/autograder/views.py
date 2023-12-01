@@ -28,6 +28,7 @@ class AssignmentDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 # Submission views
 class SubmissionListCreateView(generics.ListCreateAPIView):
+    # teacher = User.objects.get(id=)
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
     
@@ -64,18 +65,19 @@ def make_submission(request):
     return JsonResponse({"message": "Submission failed"}, safe=True)
 
 @csrf_exempt
-def login(request):
-    if request.method == "post":
+def login_(request):
+    print(request.method)
+    if request.method == "POST":
         data = json.loads(request.body)
-        username = data.get("username")
+        print(data)
+        email = data.get("email")
         password = data.get("password")
 
-        user = User.objects.filter(username=username, password=password)
+        user = User.objects.get(email=email, password=password)
         if user:
             response = {"username": user.username, "password": user.password, "id": user.id}
-            response = json.loads(response)
-            return JsonResponse(response, safe=True)
-        return JsonResponse(json.loads({"message": "user not found in db"}), safe=True)
-    return JsonResponse(json.loads({"message": "only post request allowed"}), safe=True)
+            return JsonResponse(response, safe=False)
+        return JsonResponse({"message": "user not found in db"}, safe=False)
+    return JsonResponse({"message": "only post request allowed"}, safe=False)
 
 
