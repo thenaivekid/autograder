@@ -1,0 +1,94 @@
+[
+    {
+      "question": "what is oop?",
+      "sample_answer": "Object-oriented programming (OOP) is a programming paradigm based on the concept of objects,[1] which can contain data and code: data in the form of fields (often known as attributes or properties), and code in the form of procedures (often known as methods) A common feature of objects is that methods are attached to them and can access and modify the object's data fields. In this brand of OOP, there is usually a special name such as this or self used to refer to the current object. In OOP, computer programs are designed by making them out of objects that interact with one another.[2][3] OOP languages are diverse, but the most popular ones are class-based, meaning that objects are instances of classes, which also determine their types. Many of the most widely used programming languages (such as C++, Java,[4] Python, etc.) are multi-paradigm and they support object-oriented programming to a greater or lesser degree, typically in combination with imperative, procedural programming.",
+      "clues_to_autograder": [
+        "Focus on programming",
+        "Look for mention of a object and classes"
+      ],
+      "student_answer": "OOP is object oriented programming.It is composed of classes and objects. It has functions like encapsulation, inheritance, polymorphism and so on. It is used by languages like C++, java, python, etc. It is considered more efficient than procedural oriented programming as it can be reused further and provides answer faster. "
+    },
+    {
+      "question": "What is a data structure?",
+      "sample_answer": "A data structure is a fundamental concept in computer science, representing a systematic way of organizing and storing data to facilitate efficient operations. It serves as a blueprint for managing and manipulating information, defining not only the arrangement of data elements but also specifying the set of operations that can be performed on those elements. The relationships between these elements are crucial, as they determine the structure's effectiveness in handling various tasks.",
+      "clues_to_autograder": [
+          "Focus on organizing and storing data",
+          "Look for mention of relationships and operations"
+      ],
+      "student_answer": "A data structure is a method for efficiently organizing and storing data. It involves defining relationships between data elements and specifying operations that can be performed on the data. It is also used for processing, retrieving, and storing data. There are different basic and advanced types of data structures that are used in almost every program or software system that has been developed."
+  },
+    
+    {
+      "question": "What is the output of the following Python code? \n\n```python\nprint(3 + 5 * 2)\n```",
+      "sample_answer": "The output is 13.",
+      "clues_to_autograder": [
+        "Focus on operator precedence in Python.",
+        "Consider the order of operations: parentheses, exponentiation, multiplication and division, and addition and subtraction."
+      ],
+      "student_answer": "The code outputs 13 because multiplication has a higher precedence than addition."
+    },
+    {
+      "question": "Explain the difference between an array and a linked list.",
+      "sample_answer": "Arrays and linked lists are both data structures used for storing collections of elements, but they differ in terms of structure and functionality. An array is a fixed-size, contiguous memory block that stores elements of the same type. In contrast, a linked list is a dynamic data structure where elements, called nodes, are stored in non-contiguous memory locations, and each node points to the next one in the sequence. This distinction results in varying strengths and weaknesses for different use cases.",
+      "clues_to_autograder": [
+          "Focus on fixed-size and dynamic aspects",
+          "Look for mention of element storage and node connections"
+      ],
+      "student_answer": "An array is a fixed-size structure storing elements of the same type, whereas a linked list is dynamic, using nodes to store elements and pointing to the next node in the sequence."
+  },
+  {
+    "question": "What is the time complexity of an algorithm?",
+    "sample_answer": "Time complexity is a crucial metric in algorithm analysis, quantifying the amount of time an algorithm takes to complete in relation to the size of its input. It provides insights into how the algorithm's performance scales with increasing input sizes. By focusing on the growth rate of computation time, time complexity aids in evaluating and comparing algorithms, helping to select the most efficient solution for a given problem.",
+    "clues_to_autograder": [
+        "Focus on time taken as a function of input size",
+        "Look for mention of analyzing performance scalability"
+    ],
+    "student_answer": "Time complexity is a measure of how an algorithm's runtime scales with the size of the input. It assesses the efficiency of an algorithm as the input size increases."
+},
+{
+  "question": "What is an algorithm?",
+  "sample_answer": "An algorithm is the backbone of problem-solving in computer science, providing a systematic, step-by-step procedure or set of rules for accomplishing a specific task or solving a particular problem. It serves as a clear and unambiguous roadmap, guiding the computer through a series of well-defined instructions to produce a desired output. Algorithms are essential in various applications, from sorting and searching data to optimizing complex computations and decision-making processes.",
+  "clues_to_autograder": [
+      "Focus on step-by-step procedure",
+      "Look for mention of solving a specific task or problem"
+  ],
+  "student_answer": "An algorithm is a step-by-step procedure designed to perform a specific task or solve a problem, offering a clear and defined solution. It is used for providing instructions to the computer in specified manner."
+},
+{
+  "question": "Explain the concept of Big O notation.",
+  "sample_answer": "Big O notation is a vital tool in algorithmic analysis, serving to describe the upper bound of an algorithm's growth rate concerning time complexity. It provides a standardized way of expressing the efficiency of an algorithm by focusing on its worst-case scenario. As an asymptotic notation, Big O notation abstracts away constant factors and lower-order terms, allowing for a clear comparison of different algorithms and their scalability as input sizes increase.",
+  "clues_to_autograder": [
+      "Focus on growth rate and time complexity",
+      "Look for mention of asymptotic upper bound and worst-case scenario"
+  ],
+  "student_answer": "Big O notation describes the upper limit of an algorithm's time complexity growth, offering an asymptotic upper bound in the worst-case scenario.It is one of the most fundamental tools for computer scientists to analyze the cost of an algorithm."
+},
+{
+  "question": "What is the purpose of a queue in data structures?",
+  "sample_answer": "A queue, operating on the First In, First Out (FIFO) principle, is a versatile data structure designed for effective element management. It supports two primary operations: enqueue, which adds an element to the rear of the queue, and dequeue, which removes the front element. Queues play a crucial role in scenarios such as task scheduling, breadth-first search algorithms, and buffering systems, providing a structured and orderly means of handling data.",
+  "clues_to_autograder": [
+      "Focus on First In, First Out (FIFO) principle",
+      "Look for mention of enqueue and dequeue operations"
+  ],
+  "student_answer": "A queue, following First In, First Out (FIFO), stores elements with enqueue (add) and dequeue (remove) operations. We define a queue to be a list in which all additions to the list are made at one end, and all deletions from the list are made at the other end."
+},
+{
+  "question": "What is the significance of the 'this' keyword in OOP?",
+  "sample_answer": "In object-oriented programming (OOP), the 'this' keyword holds significance as it refers to the current instance of an object within a class or method. It plays a crucial role in distinguishing between instance variables and local variables when they share the same name. By using 'this,' developers ensure accurate referencing and prevent ambiguity, contributing to the clarity and precision of the code.",
+  "clues_to_autograder": [
+      "Focus on referring to the current instance",
+      "Look for mention of differentiating between variables"
+  ],
+  "student_answer": "'this' in OOP refers to the current instance of an object, distinguishing between instance and local variables.It is used to refer the current object."
+},
+{
+  "question": "What is a constructor in object-oriented programming?",
+  "sample_answer": "A constructor in object-oriented programming (OOP) is a special method that serves the crucial role of initializing an object when it is created. It carries out essential setup tasks, such as assigning initial values to the object's attributes, ensuring that the object begins its existence in a valid and coherent state. Constructors contribute to the overall integrity and reliability of OOP code, allowing for consistent and predictable object creation.",
+  "clues_to_autograder": [
+      "Focus on initialization when object is created",
+      "Look for mention of setup tasks and valid state"
+  ],
+  "student_answer": "A constructor is a special method automatically called when creating an object. It initializes the object's attributes and performs setup tasks, ensuring a valid starting state. It prepares the new object for use, often accepting arguments that the constructor uses to set required member variables."
+}
+  ]
+  
