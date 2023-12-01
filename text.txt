@@ -1,0 +1,43 @@
+1. Question: What is the binary representation of the decimal number 10?
+Answer: The binary representation of 10 is 1010.
+Sample_answer: Give 10 marks if the answer is "The binary representation of 10 is 1010." or includes "1010".
+Clues: 
+
+
+2. Question: Which programming language is known for its readability and ease of learning?
+Answer: Python is recognized for its readability and user-friendly syntax, making it easy to learn.
+Sample_answer: The 
+
+3. Question: What does HTML stand for in web development?
+Answer: HTML stands for HyperText Markup Language, used for structuring content on the web.
+Sample_answer: helps to structure content of web
+
+
+4. Question: In networking, what does TCP stand for?
+Answer: TCP stands for Transmission Control Protocol, governing reliable data transmission over networks.
+Sample_answer: Transmission Control Protocal
+
+
+5. Question: What is the primary purpose of an operating system?
+Answer: The primary purpose of an operating system is to manage computer hardware and provide a user interface.
+Sample_answer: 
+
+6. Question: Which programming paradigm is associated with objects and classes?
+Answer: Object-Oriented Programming (OOP) is the paradigm associated with objects, classes, and encapsulation.
+
+7. Question: What term is used to describe the process of finding and fixing errors in a program?
+Answer: Debugging is the process of finding and fixing errors, or bugs, in a computer program.
+
+8. Question: In database terminology, what does SQL stand for?
+Answer: SQL stands for Structured Query Language, used for managing and querying relational databases.
+
+9. Question: What is the smallest unit of data storage in a computer?
+Answer: The smallest unit of data storage in a computer is a bit, representing a binary digit.
+
+10. Question: Which protocol is commonly used for secure communication over the internet?
+Answer: HTTPS (Hypertext Transfer Protocol Secure) is commonly used for secure communication over the internet, providing encrypted data transfer.
+
+
+
+
+
