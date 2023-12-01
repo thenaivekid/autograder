@@ -1,0 +1,92 @@
+[
+    {
+        "question": "Explain the process of photosynthesis and its significance in the context of Nepal's diverse plant life.",
+        "sample_answer": "Photosynthesis is the biological process by which plants convert light energy into chemical energy, producing glucose and oxygen. In Nepal, with its rich plant diversity, photosynthesis is essential for the survival and growth of various plant species. It forms the basis of the food chain, supporting ecosystems and maintaining environmental balance.",
+        "clues_to_autograder": [
+            "Focus on the process of photosynthesis",
+            "Look for mention of light energy conversion, glucose and oxygen production, significance in Nepal's plant diversity, and its role in the food chain and ecosystem balance"
+        ],
+        "student_answer": "Photosynthesis is a process where plants take in sunlight and produce energy for themselves. It's important for plants to survive."
+    },
+    {
+        "question": "Discuss the impact of altitude on the physiological adaptations of animals in the high-altitude regions of Nepal, such as the Himalayas.",
+        "sample_answer": "Altitude significantly influences the physiological adaptations of animals in high-altitude regions like the Himalayas in Nepal. Species in these areas exhibit adaptations such as increased lung capacity and efficient oxygen utilization. Understanding these adaptations provides insights into the unique challenges and survival strategies of fauna in Nepal's high-altitude ecosystems.",
+        "clues_to_autograder": [
+            "Focus on the impact of altitude on physiological adaptations",
+            "Look for mention of high-altitude regions like the Himalayas, adaptations such as increased lung capacity and efficient oxygen utilization, and insights into challenges and survival strategies"
+        ],
+        "student_answer": "Animals in high altitudes have big lungs to breathe better, and they can fly higher."
+    },
+    {
+        "question": "Examine the role of microorganisms in soil fertility and nutrient cycling in Nepal's agricultural landscapes.",
+        "sample_answer": "Microorganisms play a crucial role in maintaining soil fertility and nutrient cycling in Nepal's agricultural landscapes. Bacteria and fungi break down organic matter, releasing nutrients for plant uptake. This microbial activity enhances soil structure and nutrient availability, contributing to sustainable agriculture practices in Nepal.",
+        "clues_to_autograder": [
+            "Focus on the role of microorganisms in soil fertility",
+            "Look for mention of bacteria and fungi, organic matter breakdown, nutrient cycling, and contributions to sustainable agriculture practices in Nepal"
+        ],
+        "student_answer": "Microorganisms in the soil are harmful to plants and decrease nutrient levels."
+    },
+    {
+        "question": "Examine the environmental implications of Nepal's rapid urbanization and industrialization.",
+        "sample_answer": "Nepal's rapid urbanization and industrialization have significant environmental implications, including increased air and water pollution, habitat loss, and resource depletion. Balancing economic development with environmental sustainability is crucial. Implementing green practices, waste management strategies, and sustainable urban planning are essential for mitigating the environmental impact of growth.",
+        "clues_to_autograder": [
+            "Focus on environmental implications of rapid urbanization and industrialization",
+            "Look for mention of increased air and water pollution, habitat loss, resource depletion, balancing economic development with environmental sustainability, implementing green practices, waste management, and sustainable urban planning"
+        ],
+        "student_answer": "Rapid urbanization is great for the economy and doesn't have any negative effects on the environment."
+    },
+    {
+        "question": "Discuss the applications of biotechnology in enhancing crop productivity and food security in Nepal.",
+        "sample_answer": "Biotechnology applications in Nepal contribute to enhanced crop productivity and food security. Techniques such as genetic modification and precision breeding help develop crops with improved resistance to pests and diseases. These advancements play a pivotal role in ensuring a sustainable and resilient agricultural system in Nepal.",
+        "clues_to_autograder": [
+            "Focus on applications of biotechnology",
+            "Look for mention of genetic modification, precision breeding, enhanced crop productivity, food security, improved resistance to pests and diseases, and contributions to sustainable agriculture in Nepal"
+        ],
+        "student_answer": "Biotechnology is not necessary for agriculture; traditional farming methods are sufficient for crop production."
+    },
+    {
+        "question": "Examine the role of genetics in the study of hereditary diseases prevalent in certain populations in Nepal.",
+        "sample_answer": "Genetics plays a crucial role in understanding hereditary diseases prevalent in certain populations in Nepal. The study of genetic factors helps identify the causes and inheritance patterns of these diseases. This knowledge is vital for developing targeted interventions, genetic counseling, and preventive measures to address the impact of hereditary diseases in specific communities.",
+        "clues_to_autograder": [
+            "Focus on the role of genetics in the study of hereditary diseases",
+            "Look for mention of understanding causes and inheritance patterns, developing targeted interventions, genetic counseling, preventive measures, and addressing the impact in specific populations in Nepal"
+        ],
+        "student_answer": "Hereditary diseases are caused by bad luck and have nothing to do with genetics."
+    },
+    {
+        "question": "Discuss the impact of air pollution on the health of the population in urban areas of Nepal.",
+        "sample_answer": "Air pollution in urban areas of Nepal, caused by emissions from vehicles, industries, and other sources, poses significant health risks to the population. Particulate matter and pollutants can lead to respiratory issues, cardiovascular diseases, and other health problems. Mitigation measures, such as promoting clean energy and enhancing air quality monitoring, are essential for safeguarding public health.",
+        "clues_to_autograder": [
+            "Focus on the impact of air pollution on health in urban areas of Nepal",
+            "Look for mention of emissions from vehicles and industries, health risks, particulate matter, respiratory and cardiovascular issues, and mitigation measures"
+        ],
+        "student_answer": "Air pollution doesn't affect human health; it's just a myth created by environmentalists."
+    },
+    {
+        "question": "Explain the role of renewable energy sources in mitigating climate change impacts in Nepal.",
+        "sample_answer": "Renewable energy sources, such as hydropower and solar energy, play a vital role in mitigating climate change impacts in Nepal. These sources provide sustainable alternatives to fossil fuels, reducing greenhouse gas emissions and promoting a cleaner energy sector. Investing in renewable energy contributes to Nepal's commitment to environmental sustainability.",
+        "clues_to_autograder": [
+            "Focus on the role of renewable energy sources",
+            "Look for mention of hydropower, solar energy, mitigating climate change impacts, reducing greenhouse gas emissions, promoting a cleaner energy sector, and contributing to environmental sustainability"
+        ],
+        "student_answer": "Climate change is a natural process, and human activities have no impact on it. Renewable energy is a waste of resources."
+    },
+    {
+        "question": "Explain the concept of genetic engineering and its potential applications in healthcare in Nepal.",
+        "sample_answer": "Genetic engineering involves manipulating the DNA of organisms for specific purposes. In healthcare in Nepal, genetic engineering has potential applications such as gene therapy for treating genetic disorders and producing pharmaceuticals through recombinant DNA technology. These advancements offer innovative solutions for addressing health challenges and improving medical treatments.",
+        "clues_to_autograder": [
+            "Focus on the concept of genetic engineering",
+            "Look for mention of manipulating DNA, potential applications in healthcare, gene therapy, treating genetic disorders, producing pharmaceuticals through recombinant DNA technology, and innovative solutions for health challenges"
+        ],
+        "student_answer": "Genetic engineering is dangerous and should not be used in healthcare. It can lead to creating 'superhumans' with unknown consequences."
+    },
+    {
+        "question": "Examine the scientific principles behind earthquake-resistant building designs and their application in Nepal's seismic zones.",
+        "sample_answer": "Earthquake-resistant building designs in Nepal are based on scientific principles such as reinforced structures, shock absorbers, and flexible foundations. These principles aim to dissipate seismic energy, reduce structural damage, and enhance the safety of buildings in Nepal's seismic zones. Implementing these designs is crucial for mitigating earthquake risks.",
+        "clues_to_autograder": [
+            "Focus on scientific principles of earthquake-resistant building designs",
+            "Look for mention of reinforced structures, shock absorbers, flexible foundations, dissipating seismic energy, reducing structural damage, enhancing safety, and application in Nepal's seismic zones"
+        ],
+        "student_answer": "Earthquakes are rare in Nepal, so there's no need for earthquake-resistant buildings. Traditional construction methods are sufficient."
+    }
+]

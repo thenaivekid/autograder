@@ -1,6 +1,7 @@
 from openai import OpenAI
 import json
 
+client = OpenAI(api_key="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")
 
 
 def get_score_from_gpt(question, clues_to_autograder, answer, student_answer):
@@ -13,13 +14,13 @@ def get_score_from_gpt(question, clues_to_autograder, answer, student_answer):
             ]
     ).choices[0].message.content
     
-
-with open('data.json', 'r') as file:
+filename="science.json"
+with open(filename, 'r') as file:
     data = json.load(file)
 
 file = open("evaluating_gpt_results.txt", 'a')
 for datum in data:
     score = get_score_from_gpt(datum["question"], datum["clues_to_autograder"], datum["sample_answer"], datum["student_answer"])
     print(datum["question"], datum["student_answer"], score)
-    file.write(datum["question"], datum["student_answer"], score)
+    file.write(f"Question: {datum['question']}\nStudent Answer: {datum['student_answer']}\nScore: {score}\n\n")
 file.close()

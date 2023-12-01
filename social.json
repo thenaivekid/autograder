@@ -1,0 +1,92 @@
+[
+    {
+        "question": "What is the capital city of Nepal?",
+        "sample_answer": "The capital city of Nepal is Kathmandu. It serves as the political, cultural, and economic hub of the country.",
+        "clues_to_autograder": [
+            "Focus on the capital city of Nepal",
+            "Look for mention of political, cultural, and economic importance"
+        ],
+        "student_answer": "Kathmandu is the capital city of Nepal."
+    },
+    {
+        "question": "Name the major rivers that flow through Nepal.",
+        "sample_answer": "Nepal is rich in rivers, and some of the major ones include the Koshi, Gandaki, and Karnali rivers. These rivers play a crucial role in agriculture, hydroelectricity, and transportation.",
+        "clues_to_autograder": [
+            "Focus on major rivers in Nepal",
+            "Look for mention of roles in agriculture, hydroelectricity, and transportation"
+        ],
+        "student_answer": "Nepal has several major rivers, including the Koshi. These rivers are essential for agriculture."
+    },
+    {
+        "question": "What is the significance of Mount Everest in Nepali culture and geography?",
+        "sample_answer": "Mount Everest, the world's highest peak, holds immense cultural and geographical significance for Nepal. It is a symbol of national pride and attracts mountaineers and tourists worldwide. Geographically, it is part of the Himalayan range, shaping the country's topography.",
+        "clues_to_autograder": [
+            "Focus on Mount Everest's significance",
+            "Look for mention of cultural pride, tourism, and geographical impact"
+        ],
+        "student_answer": "Mount Everest is of great cultural and geographical importance to Nepal. It symbolizes national pride, attracts tourists and mountaineers, and contributes to the country's unique topography as part of the Himalayan range."
+    },
+    {
+        "question": "Explain the caste system and its historical context in Nepal.",
+        "sample_answer": "The caste system in Nepal is a social hierarchy that historically organized society into distinct groups with specific roles. It has roots in Hinduism and has influenced social, economic, and political dynamics. Over time, efforts have been made to address caste-based discrimination and promote equality.",
+        "clues_to_autograder": [
+            "Focus on the caste system in Nepal",
+            "Look for mention of historical context, Hinduism, and impacts on society"
+        ],
+        "student_answer": "The caste system in Nepal is a social hierarchy with historical roots in Hinduism. It has assigned specific roles to different groups, influencing social, economic, and political aspects. "
+    },
+    {
+        "question": "Discuss the role of women in Nepali society and their contributions to various sectors.",
+        "sample_answer": "Women in Nepali society play a multifaceted role, contributing significantly to various sectors such as education, politics, and the workforce. Despite progress, challenges like gender-based violence persist, and ongoing efforts aim to empower women and enhance their participation in all aspects of society.",
+        "clues_to_autograder": [
+            "Focus on the role of women in Nepali society",
+            "Look for mention of contributions to education, politics, and workforce, as well as challenges and empowerment efforts"
+        ],
+        "student_answer": "Women in Nepal do not contribute significantly ."
+    },
+    {
+        "question": "Describe the cultural festivals celebrated in Nepal and their significance.",
+        "sample_answer": "Nepal boasts a rich tapestry of cultural festivals, including Dashain, Tihar, and Holi. These festivals hold immense significance, fostering community bonds, expressing gratitude, and celebrating the country's diverse cultural heritage.",
+        "clues_to_autograder": [
+            "Focus on cultural festivals in Nepal",
+            "Look for mention of Dashain, Tihar, Holi, and significance in fostering community bonds and celebrating cultural heritage"
+        ],
+        "student_answer": "Nepal celebrates a variety of cultural festivals, such as Dashain, Tihar, and Holi. These festivals are significant for fostering community bonds, expressing gratitude, and celebrating the diverse cultural heritage of the country."
+    },
+    {
+        "question": "Explain the geopolitical position of Nepal and its implications on the country's history and relations.",
+        "sample_answer": "Nepal's geopolitical position, nestled between India and China, has influenced its history and international relations. The country has navigated a delicate balance, engaging with both neighbors while maintaining its sovereignty. The geopolitical context has shaped diplomatic, economic, and strategic considerations for Nepal.",
+        "clues_to_autograder": [
+            "Focus on Nepal's geopolitical position",
+            "Look for mention of India, China, sovereignty, and implications on history and international relations"
+        ],
+        "student_answer": "Nepal's geopolitical position between India and China has had profound implications on its history and international relations. The country has balanced engagements with both neighbors while safeguarding its sovereignty."
+    },
+    {
+        "question": "Discuss the environmental challenges faced by Nepal and initiatives taken for sustainable development.",
+        "sample_answer": "Nepal confronts various environmental challenges, including deforestation, pollution, and climate change impacts. Initiatives for sustainable development involve afforestation, waste management, and promoting renewable energy. Balancing environmental conservation with developmental needs is a priority for the country.",
+        "clues_to_autograder": [
+            "Focus on environmental challenges in Nepal",
+            "Look for mention of deforestation, pollution, climate change, and initiatives for sustainable development"
+        ],
+        "student_answer": "Nepal faces environmental challenges like deforestation, pollution, and climate change impacts. Initiatives for sustainable development include afforestation, waste management, and the promotion of renewable energy. The country prioritizes balancing environmental conservation with developmental needs."
+    },
+    {
+        "question": "Examine the historical and cultural significance of ancient Nepali architecture.",
+        "sample_answer": "Ancient Nepali architecture, exemplified by structures like the Kathmandu Valley's temples and palaces, holds deep historical and cultural significance. These architectural marvels reflect the artistic prowess, religious beliefs, and social dynamics of the periods in which they were built, contributing to Nepal's cultural heritage.",
+        "clues_to_autograder": [
+            "Focus on historical and cultural significance of ancient Nepali architecture",
+            "Look for mention of Kathmandu Valley, temples, palaces, artistic prowess, religious beliefs, and social dynamics"
+        ],
+        "student_answer": "Ancient Nepali architecture, showcased in structures like the temples and palaces of the Kathmandu Valley, carries profound historical and cultural significance. These architectural marvels reflect artistic prowess, religious beliefs, and social dynamics, contributing to Nepal's rich cultural heritage."
+    },
+    {
+        "question": "Explain the role of education in shaping Nepal's future and addressing social challenges.",
+        "sample_answer": "Education plays a pivotal role in shaping Nepal's future by addressing social challenges such as poverty and inequality. Efforts to improve access, quality, and inclusivity in education contribute to building a skilled workforce, fostering innovation, and promoting social cohesion for a brighter future.",
+        "clues_to_autograder": [
+            "Focus on the role of education in Nepal's future",
+            "Look for mention of addressing social challenges, improving access, quality, inclusivity, skilled workforce, innovation, and social cohesion"
+        ],
+        "student_answer": "Education is pivotal in shaping Nepal's future by addressing social challenges like poverty and inequality. Improving access,and inclusivity in education contribute to building a skilled workforce,and promoting social cohesion for a brighter future."
+    }
+]
