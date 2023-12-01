@@ -22,6 +22,8 @@ class AssignmentListCreateView(generics.ListCreateAPIView):
     queryset = Assignment.objects.all()
     serializer_class = AssignmentSerializer
 
+    
+
 class AssignmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Assignment.objects.all()
     serializer_class = AssignmentSerializer
@@ -81,3 +83,10 @@ def login_(request):
     return JsonResponse({"message": "only post request allowed"}, safe=False)
 
 
+@csrf_exempt
+def get_teachers(request):
+    teachers = User.objects.filter(role='teacher')
+
+    serialized_teachers = [teacher.username for teacher in teachers]
+    
+    return JsonResponse({"teachers": serialized_teachers}, safe=False)

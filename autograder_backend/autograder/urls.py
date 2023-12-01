@@ -4,7 +4,8 @@ from .views import (
     AssignmentListCreateView, AssignmentDetailView,
     SubmissionListCreateView, SubmissionDetailView,
     make_submission,
-    login_
+    login_,
+    get_teachers,
 )
 
 urlpatterns = [
@@ -21,4 +22,5 @@ urlpatterns = [
     path('submissions/<int:pk>/', SubmissionDetailView.as_view(), name='submission-detail'),
     path('solution/', make_submission, name="submit_solution"),
     path('login/', login_, name="login"),
+    path('teachers/', get_teachers, name="get_teachers"),
 ]
