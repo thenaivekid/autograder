@@ -30,7 +30,7 @@ function AssignmentForm() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      clues_to_autograder: `must be at least this long words:must include these terms: [ "    ", "   ", "   "],must not include inappropriate words: ["   "],extra:
+      clues_to_autograder: `must be at least this long words:must include these terms   : [ "    ", "   ", "   "],must not include inappropriate words: ["   "],extra:
       
       `,
     },
