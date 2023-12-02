@@ -39,7 +39,7 @@ text-decoration:none;
 font-size:3.5rem;
 font-family:${props => props.theme.font_family_two};
 span{
-    color:${props => props.theme.specialText};
+    color:${props => props.theme.button};
 }
 
 

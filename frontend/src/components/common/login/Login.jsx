@@ -11,7 +11,16 @@ import {
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useUserLoginMutation } from "../../../store/store";
+import {
+  setId,
+  setRole,
+  setStatus,
+  setUser,
+  useUserLoginMutation,
+} from "../../../store/store";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import Loading from "../loading/Loading";
 const LoginForm = () => {
   const {
     register,
@@ -25,10 +34,32 @@ const LoginForm = () => {
 
   const onSubmit = (data) => {
     userLogin(JSON.stringify(data));
-    
   };
+  const { data, error, isLoading } = status;
 
-  console.log(status);
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data));
+      dispatch(setRole(data.role));
+      dispatch(setStatus(true));
+
+      if (data.role === "teacher") {
+        dispatch(setId(data.id));
+        navigate("/assignments");
+      } else {
+        navigate("/teachers");
+      }
+    }
+    if (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  }, [data, error]);
 
   return (
     <FormContainer>
@@ -68,7 +99,7 @@ const LoginForm = () => {
           )}
         </FormGroup>
 
-        <Button type='submit'>Login</Button>
+        <Button type='submit'>{isLoading ? <Loading /> : "Login"}</Button>
       </form>
     </FormContainer>
   );

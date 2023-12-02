@@ -89,7 +89,7 @@ def login_(request):
 
         user = User.objects.get(email=email, password=password)
         if user:
-            response = {"username": user.username, "password": user.password, "id": user.id, "role": user.roll}
+            response = {"username": user.username, "password": user.password, "id": user.id, "role": user.role}
             return JsonResponse(response, safe=False)
         return JsonResponse({"message": "user not found in db"}, safe=False)
     return JsonResponse({"message": "only post request allowed"}, safe=False)
@@ -99,6 +99,31 @@ def login_(request):
 def get_teachers(request):
     teachers = User.objects.filter(role='teacher')
 
-    serialized_teachers = [{"username": teacher.username, "subject": teacher.subject} for teacher in teachers]
+    serialized_teachers = [{"username": teacher.username, "subject": teacher.subject,"id":teacher.id } for teacher in teachers]
     
-    return JsonResponse(serialized_teachers, safe=False)
+    return JsonResponse( serialized_teachers, safe=False)
+
+
+
+    # class ImageTextView(APIView):
+    # parser_classes = (MultiPartParser, FormParser)
+
+    # def post(self, request, *args, **kwargs):
+    #     # Accessing the uploaded image
+    #     image_file = request.data.get('image')
+    #     print(type(image_file))
+    #     # Accessing the text input
+    #     text_input = request.data.get('text_input')
+    #     print(text_input)
+    #     # Your processing logic with the image and text goes here
+    #     # For example, you can save the image, perform some analysis, etc.
+
+    #     # Placeholder response - you can customize this based on your needs
+    #     response_data = {
+    #         'message': 'Image and text received successfully.',
+    #         'text_input': text_input
+    #         # You can add more fields to the response based on your processing
+    #     }
+
+    #     return Response(response_data, status=status.HTTP_200_OK)
+	

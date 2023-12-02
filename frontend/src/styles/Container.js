@@ -48,6 +48,7 @@ margin:6rem 0;
 height:60rem;
 `
 export const AssignmentCreationDiv = styled(WrapperContainer)`
+margin-bottom:3rem;
 
 `
 export const AssignmentAdditionFormDiv = styled(WrapperContainer)`
@@ -58,3 +59,11 @@ export const AllAssignmetStudentDiv = styled(WrapperContainer)`
 `
 
 export const TeachersMainDiv=styled(WrapperContainer)``
+export const SampleContainerDiv=styled(WrapperContainer)`
+
+height:70rem;
+display: flex;
+align-items:center;
+justify-content:center;
+
+`

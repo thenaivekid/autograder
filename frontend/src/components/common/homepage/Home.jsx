@@ -46,18 +46,19 @@ function Home() {
               if (!user) {
                 navigate("/signup");
               }
+
               if (user.role === "teacher") {
                 navigate("/assignments");
               }
               if (user.role === "student") {
-                navigate("/all/assignments");
+                navigate("/teachers");
               }
             }}
           >
             {user
               ? user.role === "teacher"
                 ? "Add Assignment"
-                : "View Assignment"
+                : "View Assigment"
               : "Get Started"}
           </GetStartedButton>
         </GetStartedDiv>

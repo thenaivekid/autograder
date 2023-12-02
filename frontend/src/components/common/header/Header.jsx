@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   DesktopNav,
   Link,
@@ -10,13 +10,13 @@ import {
   NavItems,
   NavWrapper,
 } from "./style";
-import { useState } from "react";
+import { removeStatus, setRole, setUser } from "../../../store/store";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const [showModal, setShowModal] = useState(false);
-
+  const navigate = useNavigate();
   const user = useSelector((state) => state.role.status);
- 
+  const dispatch = useDispatch();
   const navData = [
     {
       title: "Home",
@@ -33,6 +33,11 @@ function Header() {
       url: "/signup",
       active: !user,
     },
+    {
+      title: "Image",
+      url: "/sample",
+      active: true,
+    },
   ];
 
   const linkStyle = ({ isActive }) => {
@@ -47,7 +52,9 @@ function Header() {
     <Nav>
       <NavWrapper>
         <Logo>
-          <LogoText to='/'>CloseAI</LogoText>
+          <LogoText to='/'>
+            Close<span>AI</span>
+          </LogoText>
         </Logo>
 
         <DesktopNav>
@@ -67,7 +74,19 @@ function Header() {
               );
             })}
 
-            {user && <LogoutButton>Logout</LogoutButton>}
+            {user && (
+              <LogoutButton
+                onClick={() => {
+                  dispatch(setUser(null));
+                  dispatch(setRole(null));
+                  dispatch(removeStatus(false));
+                  navigate("/");
+                  location.reload();
+                }}
+              >
+                Logout
+              </LogoutButton>
+            )}
           </NavItems>
         </DesktopNav>
       </NavWrapper>

@@ -3,10 +3,14 @@ import { MarkAndSuggestionDiv, MarkDiv, SuggestionDiv } from "./style";
 
 function MarksAndSuggestion({ data }) {
   return (
-    <MarkAndSuggestionDiv>
-      <MarkDiv>{data.marks}</MarkDiv>
+    <MarkAndSuggestionDiv color={data.marks < 4 ? "#eaad99" : " 	#add699"}>
+      <MarkDiv>
+        <span>{data.marks}</span> out of <span>10</span>
+      </MarkDiv>
 
-      <SuggestionDiv>{data.comment}</SuggestionDiv>
+      <SuggestionDiv>
+        <span>Comment:</span> {data.comment}
+      </SuggestionDiv>
     </MarkAndSuggestionDiv>
   );
 }

@@ -7,12 +7,12 @@ import {
   SingleAssignmentDiv,
 } from "./style";
 import dayjs from "dayjs";
-function SingleAssignment({ assignment }) {
+function SingleAssignment({ assignment, index }) {
   return (
     <SingleAssignmentDiv>
       <QuestionDiv>
         {" "}
-        {assignment.id}.{assignment.question}
+        {index + 1}.{assignment.question}
       </QuestionDiv>
       <DateDiv>
         <AddedDate>

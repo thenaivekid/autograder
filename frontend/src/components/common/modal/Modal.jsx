@@ -27,6 +27,7 @@ function Modal({ setShowModal, showModal, children }) {
           {roles.map((role) => {
             return (
               <Button
+                key={role}
                 onClick={() => {
                   dispatch(setRole(role));
                   onShowModalButtonClicked();

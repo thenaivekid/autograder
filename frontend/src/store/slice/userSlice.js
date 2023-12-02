@@ -16,9 +16,12 @@ const user = createSlice({
         },
         setStatus: (state, action) => {
             state.status = true;
+        },
+        removeStatus:(state,action)=>{
+            state.status=false;
         }
     }
 })
 
 export default user.reducer;
-export const { setRole, setUser,setStatus } = user.actions;
+export const { setRole, setUser,setStatus,removeStatus } = user.actions;

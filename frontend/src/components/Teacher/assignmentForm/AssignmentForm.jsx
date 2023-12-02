@@ -3,6 +3,7 @@ import {
   AddAssignmentHeading,
   AssignmentFormDiv,
   Button,
+  ErrorMessage,
   FormGroup,
   Input,
   InputTextArea,
@@ -10,9 +11,14 @@ import {
 } from "./style";
 
 import { useForm } from "react-hook-form";
-import { setAssignList, useSetAssignementMutation } from "../../../store/store";
+import {
+  addSingleAssignments,
+  setAssignList,
+  useSetAssignementMutation,
+} from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../common/loading/Loading";
 
 function AssignmentForm() {
   const [setAssignment, status] = useSetAssignementMutation();
@@ -22,19 +28,24 @@ function AssignmentForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      clues_to_autograder: `must be at least this long words:must include these terms: [ "    ", "   ", "   "],must not include inappropriate words: ["   "],extra:
+      
+      `,
+    },
+  });
   const navigate = useNavigate();
   const onSubmit = (data) => {
     data.teacher = teacherId;
     setAssignment(data);
   };
-  const { isLoading, data } = status;
-
- 
+  const { isLoading, data, error } = status;
 
   useEffect(() => {
     if (data) {
       dispatch(setAssignList(data));
+      dispatch(addSingleAssignments(data));
       navigate("/assignments");
     }
   }, [data]);
@@ -50,6 +61,10 @@ function AssignmentForm() {
             required: "Question is required",
           })}
         />
+
+        {errors.question && (
+          <ErrorMessage>{errors.question.message}</ErrorMessage>
+        )}
       </FormGroup>
       <FormGroup>
         <Label>Answer</Label>
@@ -59,36 +74,37 @@ function AssignmentForm() {
             required: "Answer is required",
           })}
         />
+        {errors.answer && <ErrorMessage>{errors.answer.message}</ErrorMessage>}
       </FormGroup>
       <FormGroup>
         <Label>Rubric</Label>
         <InputTextArea
           placeholder='Add a rubric'
           {...register("clues_to_autograder", {
-            required: "=rubric  are required",
+            required: false,
           })}
         />
+        {errors.clues_to_autograder && (
+          <ErrorMessage>{errors.clues_to_autograder.message}</ErrorMessage>
+        )}
       </FormGroup>
       <FormGroup>
         <Label>Deadline</Label>
         <Input
           placeholder='Add a deadline'
           {...register("deadline", {
-            required: "=rubric  are required",
+            required: "deadline  are required",
           })}
           type='date'
         />
+        {errors.deadline && (
+          <ErrorMessage>{errors.deadline.message}</ErrorMessage>
+        )}
       </FormGroup>
 
-      <Button>Add</Button>
+      <Button>{isLoading ? <Loading /> : "Add it"}</Button>
     </AssignmentFormDiv>
   );
 }
 
 export default AssignmentForm;
-
-// id: 11,
-// teacher: 28,
-// question: 'ooefj',
-// answer: 'jffoejf',
-// clues_to_autograder: 'jfoejfioef'

@@ -46,14 +46,13 @@ const SignupForm = () => {
 
     registerUser(passedData);
   };
-  console.log(error?.data?.email[0]);
 
   useEffect(() => {
-    if (error) {
+    if (error?.data) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: error?.data?.email[0],
+        text: "User already exist",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -64,10 +63,11 @@ const SignupForm = () => {
       if (role === "teacher") {
         navigate("/assignments");
       } else {
-        navigate("/all/assignments");
+        navigate("/teachers");
       }
     }
   }, [data, error]);
+
 
   const password = watch("password", "");
   return (

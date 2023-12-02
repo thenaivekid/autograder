@@ -66,7 +66,15 @@ export const api = createApi({
 
                     }
                 }
-            })
+            }),
+            getAllTeachers: builder.query({
+                query: () => {
+                    return {
+                        url: '/teachers/',
+                        method: "GET"
+                    }
+                }
+            }),
         }
     }
 })
@@ -74,4 +82,4 @@ export const api = createApi({
 
 
 
-export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation } = api;
+export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation, useGetAllTeachersQuery } = api;

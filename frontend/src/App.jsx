@@ -15,6 +15,8 @@ import AssignmentAdditionPage from "./pages/teacher/AssignmentAdditionPage";
 import AllAssignments from "./components/Teacher/assignments/AllAssignments";
 import AssignmentPage from "./pages/student/AssignmentPage";
 import HomePage from "./pages/common/HomePage";
+import TeacherPage from "./pages/student/TeacherPage";
+import SamplePage from "./pages/common/SamplePage";
 
 function App() {
   const router = createBrowserRouter(
@@ -27,7 +29,7 @@ function App() {
           element={<HomePage />}
           index
         />
-       
+
         <Route
           element={<SignupPage />}
           path='/signup'
@@ -45,6 +47,10 @@ function App() {
             index
           />
         </Route>
+        <Route
+          element={<TeacherPage />}
+          path='/teachers'
+        />
 
         <Route
           element={<AssignmentAdditionPage />}
@@ -53,7 +59,11 @@ function App() {
 
         <Route
           element={<AssignmentPage />}
-          path='/all/assignments'
+          path='/teachers/:name/:id'
+        />
+        <Route
+          element={<SamplePage />}
+          path='/sample'
         />
       </Route>
     )

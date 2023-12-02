@@ -6,19 +6,20 @@ import EmptyDiv from "../emptyDiv/EmptyDiv";
 
 function AllAssignments() {
   const allAssignment = useSelector((state) => {
-    return state.teacher.assignList;
+    return state.data.assignmentList;
   });
-  console.log(allAssignment);
+
   return (
     <AllAssignmentDiv>
-      {allAssignment.length === 0 ? (
+      {allAssignment?.length === 0 ? (
         <EmptyDiv />
       ) : (
-        allAssignment.map((item) => {
+        allAssignment?.map((item, index) => {
           return (
             <SingleAssignment
               key={item.id}
               assignment={item}
+              index={index}
             />
           );
         })

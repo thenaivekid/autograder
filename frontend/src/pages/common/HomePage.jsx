@@ -3,9 +3,11 @@ import { HomePageDiv } from "../../styles/Container";
 import Home from "../../components/common/homepage/Home";
 
 function HomePage() {
+  
   return (
     <HomePageDiv>
       <Home />
+    
     </HomePageDiv>
   );
 }
