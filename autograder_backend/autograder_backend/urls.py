@@ -20,6 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('autograder.urls')),  # Replace 'your_app_name' with the actual name of your Django app
+    path('api/', include('autograder.urls')),
+    path('auth/', include("auth_module.urls"))
 ]
 

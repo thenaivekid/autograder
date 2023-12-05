@@ -1,26 +1,18 @@
 from django.urls import path
 from .views import (
-    UserListCreateView, UserDetailView,
-    AssignmentListCreateView, AssignmentDetailView,
-    SubmissionListCreateView, SubmissionDetailView,
-    make_submission,
-    login_,
-    get_teachers,
+    get_assignments,
+    create_assignment,
+    get_submissions,
+    create_submission,
+    create_image_submission,
 )
 
 urlpatterns = [
-    # User URLs
-    path('users/', UserListCreateView.as_view(), name='user-list'),
-    path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
+    path('assignments/<int:teacher_id>/', get_assignments),
+    path('assignments/create/', create_assignment),
+    
+    path('submissions/<int:assignment_id>/', get_submissions),
+    path('submissions/create/', create_submission),
+    path('submissions/create/image/', create_image_submission),
 
-    # Assignment URLs
-    path('assignments/', AssignmentListCreateView.as_view(), name='assignment-list'),
-    path('assignments/<int:pk>/', AssignmentDetailView.as_view(), name='assignment-detail'),
-
-    # Submission URLs
-    path('submissions/', SubmissionListCreateView.as_view(), name='submission-list'),
-    path('submissions/<int:pk>/', SubmissionDetailView.as_view(), name='submission-detail'),
-    path('solution/', make_submission, name="submit_solution"),
-    path('login/', login_, name="login"),
-    path('teachers/', get_teachers, name="get_teachers"),
 ]

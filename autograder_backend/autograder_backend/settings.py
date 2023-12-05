@@ -37,9 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'corsheaders',  
+    'corsheaders',  
     'autograder',
     "django_extensions",
+    'rest_framework',
+    'rest_framework.authtoken',
+    'auth_module',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,15 @@ CORS_ALLOW_HEADERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        'auth_module.permissions.IsTeacherPermission',
+    ),
+}

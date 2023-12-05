@@ -1,10 +1,6 @@
 from rest_framework import serializers
-from .models import User, Assignment, Submission
+from .models import  Assignment, Submission
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username','email', 'password', 'role', 'subject']
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:

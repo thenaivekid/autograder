@@ -1,0 +1,57 @@
+POST http://127.0.0.1:8000/auth/signup 
+Content-Type: application/json
+
+{ "username": "harimaya", "password": "Pass1234!", "email": "adam@mail.com" }
+
+###
+
+POST http://127.0.0.1:8000/auth/login/
+Content-Type: application/json
+
+{ "username": "student2", "password": "Pass1234!" }
+
+###
+
+GET http://127.0.0.1:8000/auth/test_token 
+Content-Type: application/json
+Authorization: token 72301792f83c6bd6bce917ae4961af0322ea41ee
+
+###
+
+POST http://127.0.0.1:8000/auth/logout/
+Content-Type: application/json
+Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
+
+
+
+
+###
+
+POST http://127.0.0.1:8000/auth/signup/
+Content-Type: application/json
+
+{ "username": "monkey", "password": "Pass1234!", "email": "adam@mail.com", "role": "teacher", "subjects": "math" }
+
+###
+POST http://127.0.0.1:8000/auth/signup/
+Content-Type: application/json
+
+{ "username": "student3", "password": "Pass1234!", "email": "adam@mail.com", "role": "student", "grade": 11, "section": "F"}
+
+
+###
+
+GET http://127.0.0.1:8000/auth/teachers/
+Content-Type: application/json
+Authorization: Token 56af7e890547bd2d1f5348cd2020c32dcafe3069
+
+
+###
+
+GET http://127.0.0.1:8000/auth/students/
+Content-Type: application/json
+Authorization: Token 56af7e890547bd2d1f5348cd2020c32dcafe3069
+
+
+
+
