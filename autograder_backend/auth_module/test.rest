@@ -8,7 +8,7 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
-{ "username": "student2", "password": "Pass1234!" }
+{ "username": "ashok", "password": "Pass1234!" }
 
 ###
 
@@ -28,7 +28,7 @@ Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "ashok3", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
+{ "username": "ashokbro", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
 
 
 

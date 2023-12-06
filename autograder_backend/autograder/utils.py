@@ -1,6 +1,6 @@
 from openai import OpenAI
 from dotenv import main
-import os
+import base64
 
 main.load_dotenv()
 
@@ -18,7 +18,8 @@ def get_score_from_gpt_text(question, clues_to_autograder, answer, student_answe
     ).choices[0].message.content
 
 
-def get_score_from_gpt_image(question, clues_to_autograder, answer, image_url):
+def get_score_from_gpt_image(question, clues_to_autograder, answer, image_file):
+    base64_image = base64.b64encode(image_file.read()).decode('utf-8')
     return client.chat.completions.create(
         model="gpt-4-vision-preview",
         messages=[
@@ -42,14 +43,14 @@ def get_score_from_gpt_image(question, clues_to_autograder, answer, image_url):
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": f"{image_url}"
-                        },
-                    },
+                            "url": f"data:image/jpeg;base64,{base64_image}"
+                        }
+                    }
                 ],
             }
         ],
         max_tokens=300,
-)
+    )
 
 
 

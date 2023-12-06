@@ -52,7 +52,7 @@ def signup(request):
                 return Response(student_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         token = Token.objects.create(user=user)
-        return Response({'token': token.key, 'user': serializer.data})
+        return Response({'token': token.key, 'user': serializer.data, 'role': role})
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -73,8 +73,14 @@ def login(request):
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test_token(request):
-    return Response("passed!")
-
+    print(request.user)
+    try:
+        teacher = User.objects.get(teacherprofile__isnull=False, id=request.user.id)
+        return Response({"username": teacher.username, "id": teacher.id, "email": teacher.email, "role": "teacher"})
+    except:
+        student = User.objects.get(studentprofile__isnull=False, id=request.user.id)
+        return Response({"username": student.username, "id": student.id, "email": student.email, "role": "student"})
+    
 
 @api_view(['POST'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])

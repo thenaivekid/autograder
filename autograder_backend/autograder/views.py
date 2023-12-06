@@ -79,6 +79,7 @@ def get_submissions(request, assignment_id):
 @permission_classes([IsAuthenticated, IsStudentPermission])
 def create_image_submission(request):
     image_file = request.data.get('image')
+    print(type(image_file))
     question = request.data.get('question')
     clues_to_autograder = request.data.get('clues_to_autograder')
     answer = request.data.get('answer')
