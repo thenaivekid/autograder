@@ -8,6 +8,8 @@ import {
   Label,
   LoginDiv,
   LoginHeading,
+  SchoolOption,
+  SchoolSelection,
   SignUpHeading,
 } from "./style";
 
@@ -17,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import {
   setStatus,
   setUser,
+  useGetAllSchoolQuery,
   useRegisterUserMutation,
 } from "../../../store/store";
 import { useEffect } from "react";
@@ -25,6 +28,11 @@ import Swal from "sweetalert2";
 
 const SignupForm = () => {
   const [registerUser, status] = useRegisterUserMutation();
+  const {
+    data: schoolData,
+    error: schoolError,
+    isLoading: schoolLoading,
+  } = useGetAllSchoolQuery();
   const {
     register,
     handleSubmit,
@@ -41,12 +49,12 @@ const SignupForm = () => {
       username: data.fullName,
       password: data.password,
       email: data.email,
-      subject: data.subject || "",
+      subjects: data.subjects || "",
+      school: data.school || null,
     };
 
     registerUser(passedData);
   };
-
   useEffect(() => {
     if (error?.data) {
       Swal.fire({
@@ -58,7 +66,7 @@ const SignupForm = () => {
       });
     }
     if (data) {
-      dispatch(setUser(data));
+      dispatch(setUser(data.user));
       dispatch(setStatus(true));
       if (role === "teacher") {
         navigate("/assignments");
@@ -67,7 +75,6 @@ const SignupForm = () => {
       }
     }
   }, [data, error]);
-
 
   const password = watch("password", "");
   return (
@@ -93,7 +100,7 @@ const SignupForm = () => {
           <FormGroup>
             <Label>Subject</Label>
             <Input
-              {...register("subject", {
+              {...register("subjects", {
                 required: "Subject  is required",
                 minLength: {
                   value: 3,
@@ -101,8 +108,33 @@ const SignupForm = () => {
                 },
               })}
             />
-            {errors.subject && (
-              <ErrorMessage>{errors.subject.message}</ErrorMessage>
+            {errors.subjects && (
+              <ErrorMessage>{errors.subjects.message}</ErrorMessage>
+            )}
+          </FormGroup>
+        )}
+        {role === "teacher" && (
+          <FormGroup>
+            <Label>School</Label>
+            <SchoolSelection
+              {...register("school", {
+                required: "School is required",
+              })}
+            >
+              {schoolData?.schools?.map((school) => {
+                return (
+                  <SchoolOption
+                    key={school.id}
+                    value={school.id}
+                  >
+                    {school.name}
+                  </SchoolOption>
+                );
+              })}
+            </SchoolSelection>
+
+            {errors.school && (
+              <ErrorMessage>{errors.school.message}</ErrorMessage>
             )}
           </FormGroup>
         )}

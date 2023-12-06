@@ -63,3 +63,18 @@ export const LoginHeading = styled(Link)`
 
 color:${props => props.theme.specialText};
 `
+
+export const SchoolSelection = styled.select`
+outline:none;
+border:none;
+font-size:1.6rem;
+padding:1rem;
+color:${props => props.theme.text};
+  cursor: pointer;
+  background-color:${props => props.theme.background};
+width:100%;
+`
+
+export const SchoolOption = styled.option`
+
+`

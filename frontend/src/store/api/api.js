@@ -3,14 +3,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8000/api'
+        baseUrl: 'http://localhost:8000/'
     }),
     endpoints(builder) {
         return {
             registerUser: builder.mutation({
                 query: (formData) => {
                     return {
-                        url: '/users/',
+                        url: '/auth/signup/',
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -75,6 +75,14 @@ export const api = createApi({
                     }
                 }
             }),
+            getAllSchool: builder.query({
+                query: () => {
+                    return {
+                        url: 'auth/schools/',
+                        method: 'GET'
+                    }
+                }
+            })
         }
     }
 })
@@ -82,4 +90,4 @@ export const api = createApi({
 
 
 
-export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation, useGetAllTeachersQuery } = api;
+export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation, useGetAllTeachersQuery, useGetAllSchoolQuery } = api;

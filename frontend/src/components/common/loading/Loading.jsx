@@ -4,7 +4,7 @@ import { LoadingDiv } from "./style";
 function Loading() {
   return (
     <LoadingDiv>
-     <span class="loader"></span>
+      <span className='loader'></span>
     </LoadingDiv>
   );
 }
