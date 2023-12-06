@@ -66,7 +66,12 @@ def login(request):
         return Response("missing user", status=status.HTTP_404_NOT_FOUND)
     token, created = Token.objects.get_or_create(user=user)
     serializer = UserSerializer(user)
-    return Response({'token': token.key, 'user': serializer.data})
+    try:
+        teacher = User.objects.get(teacherprofile__isnull=False, id=user.id)
+        return Response({'token': token.key, 'user': serializer.data, "role": "teacher"}, status=status.HTTP_200_OK)
+    except:
+        student = User.objects.get(studentprofile__isnull=False, id=user.id)
+        return Response({'token': token.key, 'user': serializer.data, "role": "student"},status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -76,10 +81,10 @@ def test_token(request):
     print(request.user)
     try:
         teacher = User.objects.get(teacherprofile__isnull=False, id=request.user.id)
-        return Response({"username": teacher.username, "id": teacher.id, "email": teacher.email, "role": "teacher"})
+        return Response({"username": teacher.username, "id": teacher.id, "email": teacher.email, "role": "teacher"}, status=status.HTTP_200_OK)
     except:
         student = User.objects.get(studentprofile__isnull=False, id=request.user.id)
-        return Response({"username": student.username, "id": student.id, "email": student.email, "role": "student"})
+        return Response({"username": student.username, "id": student.id, "email": student.email, "role": "student"}, status=status.HTTP_200_OK)
     
 
 @api_view(['POST'])
