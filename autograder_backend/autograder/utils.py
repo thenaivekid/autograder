@@ -50,7 +50,7 @@ def get_score_from_gpt_image(question, clues_to_autograder, answer, image_file):
             }
         ],
         max_tokens=300,
-    )
+    ).choices[0].message.content
 
 
-
+# def read_docx(file)

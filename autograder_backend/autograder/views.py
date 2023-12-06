@@ -79,16 +79,17 @@ def get_submissions(request, assignment_id):
 @permission_classes([IsAuthenticated, IsStudentPermission])
 def create_image_submission(request):
     image_file = request.data.get('image')
-    print(type(image_file))
     question = request.data.get('question')
     clues_to_autograder = request.data.get('clues_to_autograder')
     answer = request.data.get('answer')
-    assignment = int(request.data.get("assignment"))
-    # text_input = request.data.get('text_input')
-    
-    # Post the picture online and get the URL
-    image_url = None  # Replace with your actual logic to get the image URL
-    
-    # response = get_score_from_gpt_image(question, clues_to_autograder, answer, image_url)
-    response = None
-    return Response(response, status=status.HTTP_200_OK)
+    assignment = int(request.data.get("assignment"))    
+    response = get_score_from_gpt_image(question, clues_to_autograder, answer, image_file)
+    submission = Submission.objects.create(
+        assignment=assignment,
+        student=request.user,
+        answer=answer,
+        comment= response['comment'],
+        marks= response['marks']
+    )
+    submission.save()
+    return JsonResponse(response, safe=False)
