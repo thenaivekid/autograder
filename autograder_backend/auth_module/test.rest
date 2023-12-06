@@ -23,6 +23,13 @@ Content-Type: application/json
 Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
 
 
+###
+
+POST http://127.0.0.1:8000/auth/signup/
+Content-Type: application/json
+
+{ "username": "ashok3", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
+
 
 
 ###
@@ -30,28 +37,33 @@ Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "monkey", "password": "Pass1234!", "email": "adam@mail.com", "role": "teacher", "subjects": "math" }
+{ "username": "hero", "password": "Pass1234!", "email": "adam@mail.com","school": 1, "role": "teacher", "subjects": "math" }
+
 
 ###
-POST http://127.0.0.1:8000/auth/signup/
+POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
-{ "username": "student3", "password": "Pass1234!", "email": "adam@mail.com", "role": "student", "grade": 11, "section": "F"}
+{ "username": "anil", "password": "Pass1234!", "email": "adam@mail.com", "role": "student", "grade": 11, "section": "F"}
 
 
 ###
 
 GET http://127.0.0.1:8000/auth/teachers/
 Content-Type: application/json
-Authorization: Token 56af7e890547bd2d1f5348cd2020c32dcafe3069
+Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
 
 
 ###
 
 GET http://127.0.0.1:8000/auth/students/
 Content-Type: application/json
-Authorization: Token 56af7e890547bd2d1f5348cd2020c32dcafe3069
+Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
 
 
 
+###
 
+GET http://127.0.0.1:8000/auth/schools/
+Content-Type: application/json
+Authorization: Token a397bd954faf0b2e17ad787fde8e980380fe1fc2

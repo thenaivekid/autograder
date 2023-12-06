@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import TeacherProfile, StudentProfile
+from .models import TeacherProfile, StudentProfile, School
 
 
 
@@ -11,3 +11,7 @@ class TeacherProfileAdmin(admin.ModelAdmin):
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'grade', 'section')
+    
+@admin.register(School)
+class SchoolAdmin(admin.ModelAdmin):
+    list_display = ('name',)

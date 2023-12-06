@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import TeacherProfile, StudentProfile
+from .models import TeacherProfile, StudentProfile, School
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta(object):
@@ -30,3 +30,8 @@ class StudentProfileSerializer(serializers.ModelSerializer):
         section = validated_data.pop('section')
         student_profile = StudentProfile.objects.create(user=user, grade=grade, section=section)
         return student_profile
+    
+class SchoolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = School
+        fields = ['id', 'name']

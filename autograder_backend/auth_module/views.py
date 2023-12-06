@@ -3,7 +3,8 @@ from rest_framework.authentication import SessionAuthentication, TokenAuthentica
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
+from .models import School
 
 
 from django.shortcuts import get_object_or_404
@@ -13,15 +14,6 @@ from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer, TeacherProfileSerializer, StudentProfileSerializer
 from .permissions import IsTeacherPermission, IsStudentPermission
 from .models import TeacherProfile, StudentProfile
-
-
-from django.contrib.auth.models import Group
-
-# Create a teacher group
-teacher_group, created = Group.objects.get_or_create(name='teacher')
-
-# Create a student group
-student_group, created = Group.objects.get_or_create(name='student')
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -36,6 +28,8 @@ def signup(request):
         user = serializer.save()
         user.set_password(password)
         user.save()
+        school = School.objects.get(id=request.data['school'])
+        school.users.add(user)
 
         if role == 'teacher':
             # Create a TeacherProfile for the teacher
@@ -43,7 +37,6 @@ def signup(request):
             teacher_profile_serializer = TeacherProfileSerializer(data=teacher_profile_data)
             if teacher_profile_serializer.is_valid():
                 teacher_profile_serializer.save()
-                user.groups.add(teacher_group)
 
             else:
                 return Response(teacher_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -54,7 +47,6 @@ def signup(request):
             student_profile_serializer = StudentProfileSerializer(data=student_profile_data)
             if student_profile_serializer.is_valid():
                 student_profile_serializer.save()
-                user.groups.add(student_group)
 
             else:
                 return Response(student_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -76,6 +68,7 @@ def login(request):
     serializer = UserSerializer(user)
     return Response({'token': token.key, 'user': serializer.data})
 
+
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
@@ -95,8 +88,8 @@ def logout(request):
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def teachers(request):
-    teachers = User.objects.filter(groups__name='teacher')
-    teachers = [teacher.username for teacher in teachers]
+    teachers = User.objects.filter(teacherprofile__isnull=False)
+    teachers = [teacher.username for teacher in teachers if set(teacher.schools.all()) & set(request.user.schools.all())]
     return Response({'teachers': teachers}, status=status.HTTP_200_OK)
 
 
@@ -104,7 +97,14 @@ def teachers(request):
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def students(request):
-    students = User.objects.filter(groups__name='student')
-    students = [student.username for student in students]
+    students = User.objects.filter(studentprofile__isnull=False)
+    students = [student.username for student in students if set(student.schools.all()) & set(request.user.schools.all())]
     return Response({'students': students}, status=status.HTTP_200_OK)
 
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def schools(request):
+    schools = School.objects.all()
+    schools = [{"name": school.name, "id": school.id} for school in schools]
+    return Response({'schools': schools}, status=status.HTTP_200_OK)

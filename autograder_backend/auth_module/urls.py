@@ -9,5 +9,6 @@ urlpatterns = [
     re_path('test_token', views.test_token),
     re_path('teachers', views.teachers),
     re_path('students', views.students),
+    re_path('schools', views.schools),
 ]
 

@@ -42,12 +42,11 @@ def create_assignment(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, IsStudentPermission])
 def create_submission(request):
-    data = json.loads(request.body)
-    question = data.get("question")
-    clues_to_autograder = data.get("clues_to_autograder")
-    answer = data.get("answer")
-    student_answer = data.get("student_answer")
-    assignment = int(data.get("assignment"))
+    question = request.data.get("question")
+    clues_to_autograder = request.data.get("clues_to_autograder")
+    answer = request.data.get("answer")
+    student_answer = request.data.get("student_answer")
+    assignment = int(request.data.get("assignment"))
     response = get_score_from_gpt_text(question, clues_to_autograder, answer, student_answer)
     response = json.loads(response)
     marks = response["marks"]
@@ -83,6 +82,7 @@ def create_image_submission(request):
     question = request.data.get('question')
     clues_to_autograder = request.data.get('clues_to_autograder')
     answer = request.data.get('answer')
+    assignment = int(request.data.get("assignment"))
     # text_input = request.data.get('text_input')
     
     # Post the picture online and get the URL
