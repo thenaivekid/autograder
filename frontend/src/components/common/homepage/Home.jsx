@@ -21,7 +21,6 @@ function Home() {
   const user = useSelector((state) => {
     return state.role.userData;
   });
-
   const navigate = useNavigate();
   return (
     <HomePageDiv>
