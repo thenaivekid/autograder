@@ -19,8 +19,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 function Home() {
   const user = useSelector((state) => {
-    return state.role.userData;
+    return state?.user?.userData?.role;
   });
+
   const navigate = useNavigate();
   return (
     <HomePageDiv>
@@ -46,16 +47,16 @@ function Home() {
                 navigate("/signup");
               }
 
-              if (user.role === "teacher") {
+              if (user === "teacher") {
                 navigate("/assignments");
               }
-              if (user.role === "student") {
+              if (user === "student") {
                 navigate("/teachers");
               }
             }}
           >
             {user
-              ? user.role === "teacher"
+              ? user === "teacher"
                 ? "Add Assignment"
                 : "View Assigment"
               : "Get Started"}

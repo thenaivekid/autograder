@@ -33,7 +33,7 @@ function SingleStudentAssignment({ question }) {
   const [postAnswer, status] = usePostAssignmentAnswerMutation();
 
   const studentId = useSelector((state) => {
-    return state.role.userData.id;
+    return state.user.userData.id;
   });
 
   const [showModal, setShowModal] = useState(false);

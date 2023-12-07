@@ -68,10 +68,13 @@ export const api = createApi({
                 }
             }),
             getAllTeachers: builder.query({
-                query: () => {
+                query: (token) => {
                     return {
-                        url: '/teachers/',
-                        method: "GET"
+                        url: '/auth/teachers/',
+                        method: "GET",
+                        headers: {
+                            'Authorization': `Token ${token}`
+                        }
                     }
                 }
             }),

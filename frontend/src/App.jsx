@@ -17,8 +17,19 @@ import AssignmentPage from "./pages/student/AssignmentPage";
 import HomePage from "./pages/common/HomePage";
 import TeacherPage from "./pages/student/TeacherPage";
 import SamplePage from "./pages/common/SamplePage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setToken } from "./store/store";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(setToken(JSON.parse(token)));
+    }
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route
