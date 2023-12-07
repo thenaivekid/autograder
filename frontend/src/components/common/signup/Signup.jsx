@@ -17,7 +17,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import {
+  setLocallyToken,
   setStatus,
+  setToken,
   setUser,
   useGetAllSchoolQuery,
   useRegisterUserMutation,
@@ -39,22 +41,37 @@ const SignupForm = () => {
     formState: { errors },
     watch,
   } = useForm();
-  const role = useSelector((state) => state?.role?.role) || false;
+  const role = useSelector((state) => state?.user?.role) || false;
   const { data, isLoading, isError, error } = status;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    const passedData = {
-      role,
-      username: data.fullName,
-      password: data.password,
-      email: data.email,
-      subjects: data.subjects || "",
-      school: data.school || null,
-    };
+    let passedData;
+    if (role === "teacher") {
+      passedData = {
+        role,
+        username: data.fullName,
+        password: data.password,
+        email: data.email,
+        subjects: data.subjects || "",
+        school: data.school || null,
+      };
+    } else {
+      passedData = {
+        role,
+        username: data.fullName,
+        password: data.password,
+        email: data.email,
+
+        school: data.school,
+        section: data.section,
+        grade: data.grade,
+      };
+    }
 
     registerUser(passedData);
   };
+
   useEffect(() => {
     if (error?.data) {
       Swal.fire({
@@ -66,8 +83,11 @@ const SignupForm = () => {
       });
     }
     if (data) {
-      dispatch(setUser(data.user));
+      dispatch(setUser(data));
       dispatch(setStatus(true));
+      dispatch(setToken(data.token));
+      dispatch(setLocallyToken());
+
       if (role === "teacher") {
         navigate("/assignments");
       } else {
@@ -75,6 +95,8 @@ const SignupForm = () => {
       }
     }
   }, [data, error]);
+
+  console.log(error, data);
 
   const password = watch("password", "");
   return (
@@ -113,31 +135,57 @@ const SignupForm = () => {
             )}
           </FormGroup>
         )}
-        {role === "teacher" && (
+        {role === "student" && (
           <FormGroup>
-            <Label>School</Label>
-            <SchoolSelection
-              {...register("school", {
-                required: "School is required",
+            <Label>Grade</Label>
+            <Input
+              {...register("grade", {
+                required: "Grade  is required",
               })}
-            >
-              {schoolData?.schools?.map((school) => {
-                return (
-                  <SchoolOption
-                    key={school.id}
-                    value={school.id}
-                  >
-                    {school.name}
-                  </SchoolOption>
-                );
-              })}
-            </SchoolSelection>
-
-            {errors.school && (
-              <ErrorMessage>{errors.school.message}</ErrorMessage>
+            />
+            {errors.grade && (
+              <ErrorMessage>{errors.grade.message}</ErrorMessage>
             )}
           </FormGroup>
         )}
+        {role === "student" && (
+          <FormGroup>
+            <Label>Section</Label>
+            <Input
+              {...register("section", {
+                required: "Section  is required",
+              })}
+            />
+            {errors.section && (
+              <ErrorMessage>{errors.section.message}</ErrorMessage>
+            )}
+          </FormGroup>
+        )}
+
+        <FormGroup>
+          <Label>School</Label>
+          <SchoolSelection
+            {...register("school", {
+              required: "School is required",
+            })}
+          >
+            {schoolData?.schools?.map((school) => {
+              return (
+                <SchoolOption
+                  key={school.id}
+                  value={school.id}
+                >
+                  {school.name}
+                </SchoolOption>
+              );
+            })}
+          </SchoolSelection>
+
+          {errors.school && (
+            <ErrorMessage>{errors.school.message}</ErrorMessage>
+          )}
+        </FormGroup>
+
         <FormGroup>
           <Label>Email</Label>
           <Input

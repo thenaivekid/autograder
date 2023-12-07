@@ -35,7 +35,7 @@ align-items:center;
 justify-content:center;
 width:100%;
 margin:6rem auto;
-height:60rem;
+height:70rem;
 `
 
 export const LoginDiv = styled(WrapperContainer)`

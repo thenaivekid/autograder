@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.role.status);
+  const user = useSelector((state) => state.user.status);
   const dispatch = useDispatch();
   const navData = [
     {

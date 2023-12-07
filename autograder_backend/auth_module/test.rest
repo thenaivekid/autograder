@@ -28,7 +28,7 @@ Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "ashokbro", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
+{ "username": "ashokbrogrgegerherh543554", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
 
 
 
@@ -51,7 +51,7 @@ Content-Type: application/json
 
 GET http://127.0.0.1:8000/auth/teachers/
 Content-Type: application/json
-Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
+Authorization: Token 6459473420dc3146e384ca4cb8ae63a57c2f365c
 
 
 ###

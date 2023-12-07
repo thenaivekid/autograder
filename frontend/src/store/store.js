@@ -9,7 +9,7 @@ import dataSlice from "./slice/dataSlice";
 
 const store = configureStore({
     reducer: {
-        role: userSlice,
+        user: userSlice,
         teacher: teacherSlice,
         student: studentSlice,
         data: dataSlice,

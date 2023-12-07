@@ -4,7 +4,7 @@ import banner from "../../../assets/teacherBanner.jpg";
 import { useSelector } from "react-redux";
 function AssignmentBanner() {
   const TeacherName = useSelector((state) => {
-    return state.role.userData.username;
+    return state.user.userData.username;
   });
   return (
     <AssignmentBannerDiv

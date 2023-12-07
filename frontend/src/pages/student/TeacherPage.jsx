@@ -6,11 +6,15 @@ import {
   useGetAllTeachersQuery,
 } from "../../store/store";
 import AllTeacher from "../../components/Student/allTeacher/AllTeacher";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FullPageLoading from "../../components/common/loading/FullPageLoading";
 
 function TeacherPage() {
-  const { data, isLoading, error } = useGetAllTeachersQuery();
+  const token = useSelector((state) => {
+    return state.user.token;
+  });
+  console.log(token);
+  const { data, isLoading, error } = useGetAllTeachersQuery(token);
 
   const {
     data: QuestionData,
@@ -23,7 +27,6 @@ function TeacherPage() {
       dispatch(setAssignmentQuestions(QuestionData));
     }
   }, [QuestionData]);
-
 
   if (isLoading || QuestionLoading) {
     return (

@@ -5,7 +5,8 @@ const user = createSlice({
     initialState: {
         role: "",
         userData: null,
-        status: false
+        status: false,
+        token: null
     },
     reducers: {
         setRole: (state, action) => {
@@ -17,11 +18,24 @@ const user = createSlice({
         setStatus: (state, action) => {
             state.status = true;
         },
-        removeStatus:(state,action)=>{
-            state.status=false;
+        removeStatus: (state, action) => {
+            state.status = false;
+        },
+        setToken: (state, action) => {
+            state.token = action.payload;
+        },
+        setLocallyToken: (state, action) => {
+            localStorage.setItem('token', JSON.stringify(state.token));
+
+        },
+        removeToken: (state, action) => {
+            state.token = null;
+        },
+        removeFromStorage: (state, action) => {
+            localStorage.removeItem('token');
         }
     }
 })
 
 export default user.reducer;
-export const { setRole, setUser,setStatus,removeStatus } = user.actions;
+export const { setRole, setUser, setStatus, removeStatus, setToken, removeToken, removeFromStorage, setLocallyToken } = user.actions;
