@@ -51,7 +51,7 @@ Content-Type: application/json
 
 GET http://127.0.0.1:8000/auth/teachers/
 Content-Type: application/json
-Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
+Authorization: Token 348d2c2b7ead4e69802b4f42dddf870ae65d651e
 
 
 ###
