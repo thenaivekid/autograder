@@ -100,8 +100,18 @@ def logout(request):
 @permission_classes([IsAuthenticated])
 def teachers(request):
     teachers = User.objects.filter(teacherprofile__isnull=False)
-    teachers = [teacher.username for teacher in teachers if set(teacher.schools.all()) & set(request.user.schools.all())]
-    return Response({'teachers': teachers}, status=status.HTTP_200_OK)
+    teachers_data = []
+
+    for teacher in teachers:
+        if set(teacher.schools.all()) & set(request.user.schools.all()):
+            teacher_username = teacher.username
+            teacher_subject = TeacherProfile.objects.get(user=teacher.id).subjects
+
+            teachers_data.append({'username': teacher_username, 'subject': teacher_subject,
+            'id': teacher.id
+            })
+
+    return Response({'teachers': teachers_data}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
