@@ -37,7 +37,7 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "hero", "password": "Pass1234!", "email": "adam@mail.com","school": 1, "role": "teacher", "subjects": "math" }
+{ "username": "anilstha", "password": "Pass1234!", "email": "adam@mail.com","school": 1, "role": "teacher", "subjects": "math" }
 
 
 ###
