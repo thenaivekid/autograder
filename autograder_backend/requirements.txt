@@ -2,3 +2,4 @@ openai
 django
 djangorestframework
 django-cors-headers==3.6.0
+python-dotenv==0.21.0
