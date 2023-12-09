@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',  
     'autograder',
-    "django_extensions",
     'rest_framework',
     'rest_framework.authtoken',
     'auth_module',
