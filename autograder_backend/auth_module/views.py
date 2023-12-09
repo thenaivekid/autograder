@@ -107,7 +107,9 @@ def teachers(request):
             teacher_username = teacher.username
             teacher_subject = TeacherProfile.objects.get(user=teacher.id).subjects
 
-            teachers_data.append({'username': teacher_username, 'subject': teacher_subject})
+            teachers_data.append({'username': teacher_username, 'subject': teacher_subject,
+            'id': teacher.id
+            })
 
     return Response({'teachers': teachers_data}, status=status.HTTP_200_OK)
 

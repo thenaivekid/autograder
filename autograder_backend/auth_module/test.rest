@@ -8,19 +8,27 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
-{ "username": "ashok", "password": "Pass1234!" }
+{ "username": "jeevanneupanes", "password": "jeevan123" }
+
+
+###
+
+POST http://127.0.0.1:8000/auth/login/
+Content-Type: application/json
+
+{ "username": "jenisha", "password": "jenisha123" }
 
 ###
 
 GET http://127.0.0.1:8000/auth/test_token 
 Content-Type: application/json
-Authorization: token 72301792f83c6bd6bce917ae4961af0322ea41ee
+Authorization: token 2765526a4eba2ab6377d04a680219ede1a3bf7d0
 
 ###
 
 POST http://127.0.0.1:8000/auth/logout/
 Content-Type: application/json
-Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
+Authorization: Token 26576b61af5eba2d08572f9e540ebc36b8f55c06
 
 
 ###
@@ -28,7 +36,7 @@ Authorization: Token 72301792f83c6bd6bce917ae4961af0322ea41ee
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "ashokbrogrgegerherh543554", "password": "Pass1234!", "email": "adam@mail.com","school": 3, "role": "student", "grade": 9, "section": "F" }
+{ "username": "jeevanneupanes", "password": "jeevan123", "email": "adam@mail.com","school": 1, "role": "student", "grade": 14, "section": "B" }
 
 
 
@@ -37,28 +45,32 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
+<<<<<<< HEAD
+{ "username": "junu", "password": "junu123", "email": "adam@mail.com","school": 1, "role": "teacher", "subjects": "science" }
+=======
 { "username": "anilstha", "password": "Pass1234!", "email": "adam@mail.com","school": 1, "role": "teacher", "subjects": "math" }
+>>>>>>> 0b121ce4f01475e3c45666913a38a6565a3889e4
 
 
 ###
-POST http://127.0.0.1:8000/auth/login/
+POST http://127.0.0.1:8000/auth/signup/
 Content-Type: application/json
 
-{ "username": "anil", "password": "Pass1234!", "email": "adam@mail.com", "role": "student", "grade": 11, "section": "F"}
+{ "username": "anil", "password": "Pass1234!", "email": "adam@mail.com", "role": "student", "grade": 11, "section": "F","school":1}
 
 
 ###
 
 GET http://127.0.0.1:8000/auth/teachers/
 Content-Type: application/json
-Authorization: Token 348d2c2b7ead4e69802b4f42dddf870ae65d651e
+Authorization: Token 4835b608f19dd717e39e06ef13bf44434a936235
 
 
 ###
 
 GET http://127.0.0.1:8000/auth/students/
 Content-Type: application/json
-Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
+Authorization: Token 89793c5a57491e84023cbee549fd32b867a60a0b
 
 
 
@@ -66,4 +78,38 @@ Authorization: Token cc85557332aea5801836ce0be1447ec33d265af0
 
 GET http://127.0.0.1:8000/auth/schools/
 Content-Type: application/json
-Authorization: Token a397bd954faf0b2e17ad787fde8e980380fe1fc2
+Authorization: Token 89793c5a57491e84023cbee549fd32b867a60a0b
+
+
+###
+GET http://127.0.0.1:8000/api/assignments/5/
+Content-Type: application/json
+Authorization: Token 89793c5a57491e84023cbee549fd32b867a60a0b
+
+
+###
+POST http://127.0.0.1:8000/api/assignments/create/
+Content-Type: application/json
+Authorization: Token 89793c5a57491e84023cbee549fd32b867a60a0b
+
+{
+  "teacher": 5,
+  "question":"What is oop",
+  "answer": "Object oriented programming",
+  "clues_to_autograder": " ",
+  "deadline": "2023-10-12T00:00:00"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/submissions/create/
+Content-Type: application/json
+Authorization: Token 26576b61af5eba2d08572f9e540ebc36b8f55c06
+
+{
+  "question":"SAY YOUR NAME BRO",
+  "answer": "got no name",
+  "clues_to_autograder": " nope ",
+  "assignment": 1,
+  "student_answer": "i am ashok"
+}
