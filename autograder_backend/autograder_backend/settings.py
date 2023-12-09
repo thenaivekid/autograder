@@ -129,7 +129,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Replace with the origin of your frontend
     "http://173.16.0.101:5173", 
     "autograder-ashok.onrender.com",
-    "https://autograder-frontend.netlify.app",
 ] 
 
 CORS_ALLOW_HEADERS = [
