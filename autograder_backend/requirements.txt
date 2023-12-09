@@ -1,4 +1,4 @@
 openai
 django
 djangorestframework
-corsheaders
+django-cors-headers==3.6.0
