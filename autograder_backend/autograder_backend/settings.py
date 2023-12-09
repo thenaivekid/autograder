@@ -160,3 +160,6 @@ REST_FRAMEWORK = {
         'auth_module.permissions.IsTeacherPermission',
     ),
 }
+
+
+CSRF_TRUSTED_ORIGINS = ["autograder-ashok.onrender.com", 'https://*.127.0.0.1', "https://autograder-frontend.netlify.app/",]
