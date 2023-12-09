@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-luc*f^2y7l^=fo&t6@ff!_=3=-f4%j+i-fc=2dtemv-a971+2p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://autograder-ashok.onrender.com", "localhost","https://autograder-frontend.netlify.app"]
+ALLOWED_HOSTS = ["autograder-ashok.onrender.com", "localhost","https://autograder-frontend.netlify.app"]
 
 
 # Application definition
