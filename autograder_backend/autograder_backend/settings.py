@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-luc*f^2y7l^=fo&t6@ff!_=3=-f4%j+i-fc=2dtemv-a971+2p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["autograder-ashok.onrender.com", "localhost","https://autograder-frontend.netlify.app/"]
 
 
 # Application definition
@@ -127,7 +127,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Replace with the origin of your frontend
-    "http://173.16.0.101:5173",  # Replace with the origin of your frontend
+    "http://173.16.0.101:5173", 
+    "autograder-ashok.onrender.com",
+    "https://autograder-frontend.netlify.app/",
 ] 
 
 CORS_ALLOW_HEADERS = [
