@@ -30,12 +30,13 @@ function SingleStudentAssignment({ question }) {
     formState: { errors },
   } = useForm();
 
+  const token = useSelector((state) => state.user.token);
+
   const [postAnswer, status] = usePostAssignmentAnswerMutation();
 
   const studentId = useSelector((state) => {
     return state.user.userData.id;
   });
-
   const [showModal, setShowModal] = useState(false);
   const { data, isLoading, error } = status;
   const onSubmit = (data) => {
@@ -49,7 +50,7 @@ function SingleStudentAssignment({ question }) {
     };
     const submittedData = JSON.stringify(dataToSubmit);
     setShowModal(!showModal);
-    postAnswer(submittedData);
+    postAnswer({ data: submittedData, token });
   };
 
   const handleShow = () => {

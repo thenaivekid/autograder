@@ -83,7 +83,13 @@ const SignupForm = () => {
       });
     }
     if (data) {
-      dispatch(setUser(data));
+      const userData = {
+        id: data.user.id,
+        username: data.user.username,
+        email: data.user.email,
+        role: data.role,
+      };
+      dispatch(setUser(userData));
       dispatch(setStatus(true));
       dispatch(setToken(data.token));
       dispatch(setLocallyToken());

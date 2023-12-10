@@ -13,8 +13,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   setId,
+  setLocallyToken,
   setRole,
   setStatus,
+  setToken,
   setUser,
   useUserLoginMutation,
 } from "../../../store/store";
@@ -39,9 +41,16 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (data) {
-      dispatch(setUser(data));
-      dispatch(setRole(data.role));
+      const userData = {
+        id: data.user.id,
+        username: data.user.username,
+        email: data.user.email,
+        role: data.role,
+      };
+      dispatch(setUser(userData));
       dispatch(setStatus(true));
+      dispatch(setToken(data.token));
+      dispatch(setLocallyToken());
 
       if (data.role === "teacher") {
         dispatch(setId(data.id));
@@ -66,19 +75,15 @@ const LoginForm = () => {
       <LoginHeading>Login </LoginHeading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
-          <Label>Email</Label>
+          <Label>Username</Label>
           <Input
-            {...register("email", {
-              required: "Email  is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Enter a valid email address",
-              },
+            {...register("username", {
+              required: "Username  is required",
             })}
-            type='email'
+            type='text'
           />
           {errors.username && (
-            <ErrorMessage>{errors.fullName.message}</ErrorMessage>
+            <ErrorMessage>{errors.username.message}</ErrorMessage>
           )}
         </FormGroup>
 

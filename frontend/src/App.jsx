@@ -18,18 +18,59 @@ import HomePage from "./pages/common/HomePage";
 import TeacherPage from "./pages/student/TeacherPage";
 import SamplePage from "./pages/common/SamplePage";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setToken } from "./store/store";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setAssignList,
+  setManyAssignList,
+  setRole,
+  setStatus,
+  setToken,
+  setUser,
+  useGetAllAssignmentQuestionsQuery,
+  useValidateUserQuery,
+} from "./store/store";
+import AllAssignmentsPage from "./pages/teacher/AllAssignmentsPage";
+import { AppContainer } from "./styles/Container";
+import FullPageLoading from "./components/common/loading/FullPageLoading";
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.user.token);
+  const id = useSelector((state) => state?.user?.userData?.id);
+  const {
+    data: questionsData,
+    isLoading: questionsLoading,
+    error: questionsError,
+  } = useGetAllAssignmentQuestionsQuery({
+    token,
+    id,
+  });
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(setToken(JSON.parse(token)));
     }
   }, []);
-
+  const { data, isLoading, error } = useValidateUserQuery(token);
+  useEffect(() => {
+    if (questionsData) {
+      dispatch(setManyAssignList(questionsData));
+      dispatch(setAssignList());
+    }
+  }, [questionsData]);
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (token) {
+      dispatch(setToken(token));
+    }
+  }, []);
+  useEffect(() => {
+    if (data) {
+      dispatch(setRole(data.role));
+      dispatch(setUser(data));
+      dispatch(setStatus());
+    }
+  }, [data]);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route
@@ -70,19 +111,31 @@ function App() {
 
         <Route
           element={<AssignmentPage />}
-          path='/teachers/:name/:id'
+          path='/teachers/:id'
         />
         <Route
           element={<SamplePage />}
           path='/sample'
         />
+        <Route
+          element={<AllAssignmentsPage />}
+          path='/assignments/all'
+        />
       </Route>
     )
   );
+  if (isLoading) {
+  }
 
   return (
     <ThemeProvider theme={lightThemeColors}>
-      <RouterProvider router={router} />
+      {!(isLoading || questionsLoading) ? (
+        <RouterProvider router={router} />
+      ) : (
+        <AppContainer>
+          <FullPageLoading />
+        </AppContainer>
+      )}
       <GlobalStyle />
     </ThemeProvider>
   );

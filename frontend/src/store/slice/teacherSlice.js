@@ -4,19 +4,28 @@ import { createSlice } from "@reduxjs/toolkit";
 const teacherSlice = createSlice({
     name: "teacher",
     initialState: {
+        teacherAssignmets: [],
+        id: null,
+        allAssgnments: []
 
-        IDBRequest: null,
-        totalAssignment: null,
 
 
     },
     reducers: {
         setAssignList: (state, action) => {
-            let newList = [action.payload, ...state.totalAssignment];
-            state.totalAssignment = newList;
+            if (!action.payload) {
+                const reversed = state.teacherAssignmets.slice().reverse();
+                state.allAssgnments = [...reversed];
+
+            } else {
+                state.allAssgnments = [action.payload, ...state.allAssgnments]
+            }
+
+
         },
         setManyAssignList: (state, action) => {
-            state.totalAssignment = action.payload;
+
+            state.teacherAssignmets = [...action.payload];
         },
         setId: (state, action) => {
             state.id = action.payload;

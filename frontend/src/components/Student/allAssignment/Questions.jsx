@@ -8,16 +8,34 @@ import {
 import { useSelector } from "react-redux";
 import SingleStudentAssignment from "./Question";
 import { useParams } from "react-router-dom";
+import { useGetAllAssignmentQuestionsQuery } from "../../../store/store";
+import FullPageLoading from "../../common/loading/FullPageLoading";
 
 function AllStudentsAssignmet() {
-  const allQuestions = useSelector((state) => {
-    return state.student.assignmentQuestions;
-  });
-  const { id, name } = useParams();
+  const { id } = useParams();
+  const token = useSelector((state) => state.user.token);
+  const {
+    data: QuestionData,
+    isLoading: QuestionLoading,
+    error: QuestionError,
+  } = useGetAllAssignmentQuestionsQuery({ token, id });
 
-  const questionToShow = allQuestions.filter((question) => {
-    return question.teacher == id;
-  });
+  if (QuestionLoading) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <FullPageLoading />
+      </div>
+    );
+  }
+
   return (
     <>
       <TeachersQuestionTotalDiv>
@@ -25,11 +43,11 @@ function AllStudentsAssignmet() {
           Teacher Name: <span> {name.replace("_", " ")}</span>
         </TeacherName>
         <TotalQuestions>
-          Total: <span>{questionToShow.length}</span>
+          Total: <span>{QuestionData.length}</span>
         </TotalQuestions>
       </TeachersQuestionTotalDiv>
       <AllStudentAssignmentDiv>
-        {questionToShow?.map((question) => {
+        {QuestionData?.map((question) => {
           return (
             <SingleStudentAssignment
               question={question}

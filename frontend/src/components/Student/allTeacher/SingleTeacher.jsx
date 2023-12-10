@@ -10,9 +10,7 @@ import {
 import user from "../../../assets/users.svg";
 function SingleTeacher({ teacher }) {
   return (
-    <SingleTeacherDiv
-      to={`/teachers/${teacher.username.replace(" ", "_")}/${teacher.id}`}
-    >
+    <SingleTeacherDiv to={`/teachers/${teacher.id}`}>
       <InfoDiv>
         <NameDiv>{teacher.username}</NameDiv>
         <SubjectDiv>{teacher.subject}</SubjectDiv>

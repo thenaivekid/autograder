@@ -10,7 +10,13 @@ import {
   NavItems,
   NavWrapper,
 } from "./style";
-import { removeStatus, setRole, setUser } from "../../../store/store";
+import {
+  removeFromStorage,
+  removeStatus,
+  removeToken,
+  setRole,
+  setUser,
+} from "../../../store/store";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -80,6 +86,8 @@ function Header() {
                   dispatch(setUser(null));
                   dispatch(setRole(null));
                   dispatch(removeStatus(false));
+                  dispatch(removeFromStorage());
+                  dispatch(removeToken());
                   navigate("/");
                   location.reload();
                 }}

@@ -20,34 +20,41 @@ export const api = createApi({
                 }
             }),
             setAssignement: builder.mutation({
-                query: (assignment) => {
+                query: ({ assignment, token }) => {
                     return {
-                        url: '/assignments/',
+                        url: 'api/assignments/create/',
                         method: "POST"
                         ,
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            'Authorization': `Token ${token}`
                         },
+
                         body: assignment
                     }
                 }
             }),
+            
             getAllAssignmentQuestions: builder.query({
-                query: () => {
+                query: ({ token, id }) => {
                     return {
-                        url: '/assignments/',
-                        method: "GET"
+                        url: `/api/assignments/${id}/`,
+                        method: "GET",
+                        headers: {
+                            'Authorization': `Token ${token}`
+                        }
                     }
                 }
             }),
             postAssignmentAnswer: builder.mutation({
-                query: (data) => {
+                query: ({ data, token }) => {
                     return {
-                        url: '/solution/',
+                        url: 'api/submissions/create/',
                         method: "POST"
                         ,
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            'Authorization': `Token ${token}`
                         },
                         body: data
                     }
@@ -56,11 +63,12 @@ export const api = createApi({
             userLogin: builder.mutation({
                 query: (data) => {
                     return {
-                        url: 'login/',
+                        url: 'auth/login/',
                         method: "POST"
                         ,
                         headers: {
                             "Content-Type": "application/json"
+
                         },
                         body: data
 
@@ -85,6 +93,17 @@ export const api = createApi({
                         method: 'GET'
                     }
                 }
+            }),
+            validateUser: builder.query({
+                query: (token) => {
+                    return {
+                        url: '/auth/test_token',
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Token ${token}`
+                        }
+                    }
+                }
             })
         }
     }
@@ -93,4 +112,4 @@ export const api = createApi({
 
 
 
-export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation, useGetAllTeachersQuery, useGetAllSchoolQuery } = api;
+export const { useRegisterUserMutation, useSetAssignementMutation, useGetAllAssignmentQuestionsQuery, usePostAssignmentAnswerMutation, useUserLoginMutation, useGetAllTeachersQuery, useGetAllSchoolQuery, useValidateUserQuery } = api;

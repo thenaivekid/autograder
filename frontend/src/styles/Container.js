@@ -58,10 +58,22 @@ export const AssignmentAdditionFormDiv = styled(WrapperContainer)`
 export const AllAssignmetStudentDiv = styled(WrapperContainer)`
 `
 
-export const TeachersMainDiv=styled(WrapperContainer)``
-export const SampleContainerDiv=styled(WrapperContainer)`
+export const TeachersMainDiv = styled(WrapperContainer)``
+export const SampleContainerDiv = styled(WrapperContainer)`
 
 height:70rem;
+display: flex;
+align-items:center;
+justify-content:center;
+
+`
+export const AllAssignmentDiv = styled(WrapperContainer)`
+
+`
+
+export const AppContainer = styled.div`
+width:100vw;
+height:100vh;
 display: flex;
 align-items:center;
 justify-content:center;

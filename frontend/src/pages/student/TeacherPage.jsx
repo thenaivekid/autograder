@@ -13,22 +13,11 @@ function TeacherPage() {
   const token = useSelector((state) => {
     return state.user.token;
   });
-  console.log(token);
   const { data, isLoading, error } = useGetAllTeachersQuery(token);
 
-  const {
-    data: QuestionData,
-    isLoading: QuestionLoading,
-    error: QuestionError,
-  } = useGetAllAssignmentQuestionsQuery();
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (QuestionData) {
-      dispatch(setAssignmentQuestions(QuestionData));
-    }
-  }, [QuestionData]);
 
-  if (isLoading || QuestionLoading) {
+  if (isLoading) {
     return (
       <TeachersMainDiv
         style={{

@@ -4,7 +4,7 @@ import banner from "../../../assets/teacherBanner.jpg";
 import { useSelector } from "react-redux";
 function AssignmentBanner() {
   const TeacherName = useSelector((state) => {
-    return state.user.userData.username;
+    return state?.user?.userData?.username;
   });
   return (
     <AssignmentBannerDiv
@@ -12,7 +12,7 @@ function AssignmentBanner() {
         backgroundImage: `url(${banner})`,
       }}
     >
-      <TeacherNameDiv>{TeacherName}'s Assignment</TeacherNameDiv>
+      <TeacherNameDiv>Welcome! {TeacherName?.toUpperCase()}</TeacherNameDiv>
     </AssignmentBannerDiv>
   );
 }

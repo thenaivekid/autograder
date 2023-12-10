@@ -1,30 +1,34 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { AllAssignmentDiv } from "./style";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AllAssignmentDiv, AllAssignmentHeading } from "./style";
 import SingleAssignment from "./SingleAssignment";
 import EmptyDiv from "../emptyDiv/EmptyDiv";
+import AddMore from "../addMore/AddMore";
 
 function AllAssignments() {
-  const allAssignment = useSelector((state) => {
-    return state.data.assignmentList;
+  let allAssignment = useSelector((state) => {
+    return state.teacher.allAssgnments;
   });
-
   return (
-    <AllAssignmentDiv>
-      {allAssignment?.length === 0 ? (
-        <EmptyDiv />
-      ) : (
-        allAssignment?.map((item, index) => {
-          return (
-            <SingleAssignment
-              key={item.id}
-              assignment={item}
-              index={index}
-            />
-          );
-        })
-      )}
-    </AllAssignmentDiv>
+    <>
+      <AddMore />
+      <AllAssignmentHeading>All Assignments</AllAssignmentHeading>
+      <AllAssignmentDiv>
+        {allAssignment?.length === 0 ? (
+          <EmptyDiv />
+        ) : (
+          allAssignment?.map((item, index) => {
+            return (
+              <SingleAssignment
+                key={item.id}
+                assignment={item}
+                index={index}
+              />
+            );
+          })
+        )}
+      </AllAssignmentDiv>
+    </>
   );
 }
 

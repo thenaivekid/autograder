@@ -21,8 +21,9 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../common/loading/Loading";
 
 function AssignmentForm() {
+  const token = useSelector((state) => state.user.token);
   const [setAssignment, status] = useSetAssignementMutation();
-  const teacherId = useSelector((state) => state?.role?.userData?.id);
+  const teacherId = useSelector((state) => state?.user?.userData?.id);
   const dispatch = useDispatch();
   const {
     register,
@@ -38,7 +39,7 @@ function AssignmentForm() {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     data.teacher = teacherId;
-    setAssignment(data);
+    setAssignment({ assignment: data, token });
   };
   const { isLoading, data, error } = status;
 
@@ -46,10 +47,9 @@ function AssignmentForm() {
     if (data) {
       dispatch(setAssignList(data));
       dispatch(addSingleAssignments(data));
-      navigate("/assignments");
+      navigate("/assignments/all");
     }
   }, [data]);
-
   return (
     <AssignmentFormDiv onSubmit={handleSubmit(onSubmit)}>
       <AddAssignmentHeading>Add</AddAssignmentHeading>
