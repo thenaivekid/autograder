@@ -97,7 +97,7 @@ def logout(request):
 
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def teachers(request):
     teachers = User.objects.filter(teacherprofile__isnull=False)
     teachers_data = []

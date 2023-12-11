@@ -125,9 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Replace with the origin of your frontend
-    "http://173.16.0.101:5173", 
     "https://autograder-ashok.onrender.com",
 ] 
 
