@@ -128,6 +128,7 @@ STATIC_URL = '/static/'
 
 CORS_ALLOWED_ORIGINS = [
     "https://autograder-ashok.onrender.com",
+    "https://autograder-frontend.netlify.app",
 ] 
 
 CORS_ALLOW_HEADERS = [
